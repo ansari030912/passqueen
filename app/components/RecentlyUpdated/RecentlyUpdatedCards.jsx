@@ -19,7 +19,7 @@ const RecentlyUpdatedCards = async () => {
 
   const data = await response.json();
   return (
-    <section className="bg-gray-100">
+    <section >
       <div className="container mx-auto py-12 px-6">
         <Grid container spacing={4}>
           {data.slice(0, 12).map((item, i) => {
