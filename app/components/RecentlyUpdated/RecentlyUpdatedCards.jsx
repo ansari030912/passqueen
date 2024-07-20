@@ -29,7 +29,7 @@ const RecentlyUpdatedCards = async () => {
                   sx={{
                     border: "none",
                     boxShadow: "none",
-                    minHeight: "240px",
+                    minHeight: "235px",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
@@ -54,7 +54,7 @@ const RecentlyUpdatedCards = async () => {
                         {moment(item.exam_update_date).format("DD MMM YYYY")}
                       </Typography>
                     </div>
-                    <hr className="mb-2 border-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+                    <hr className="mb-2 border-0 h-1 bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300" />
 
                     <Typography
                       sx={{ fontSize: "15px" }}
