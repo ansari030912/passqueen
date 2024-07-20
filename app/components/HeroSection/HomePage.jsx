@@ -38,7 +38,7 @@ const HomePage = () => {
               by IT professionals. Achieve excellence with expert-approved
               training programs.
             </p>
-            <div className="flex flex-wrap mt-8 space-y-6 space-x-3 md:space-y-3 md:space-x-4">
+            <div className="flex flex-wrap mt-8 space-y-6 space-x-3 md:space-y-3 lg:-ml-4 md:space-x-4">
               <div className="text-center text-transparent"></div>
               <div className="text-center p-4 border-white border-2 rounded-lg shadow-md w-full sm:w-1/2 md:w-auto flex-grow">
                 <span className="block text-2xl font-bold">20K+</span>

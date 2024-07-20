@@ -91,7 +91,7 @@ const Nav = () => {
               <div className="w-1/2 px-4">
                 <div className="flex items-center justify-end">
                   <a
-                    className="group bg-indigo-500 opacity-90 mr-6 px-3 rounded-lg shadow-lg py-3 inline-flex items-center text-sm"
+                    className="group bg-indigo-500 opacity-90 mr-6 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2 py-3 inline-flex items-center text-sm"
                     href="#"
                   >
                     <span className="md:mr-2">
@@ -116,7 +116,7 @@ const Nav = () => {
                     </span>
                   </a>
                   <a
-                    className="group bg-indigo-500 opacity-90 px-3 rounded-lg shadow-lg py-3 inline-flex items-center text-sm"
+                    className="group bg-indigo-500 opacity-90 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2 py-3 inline-flex items-center text-sm"
                     href="#"
                   >
                     <span className="md:mr-2">
