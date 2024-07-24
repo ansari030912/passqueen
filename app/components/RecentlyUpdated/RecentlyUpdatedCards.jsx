@@ -19,12 +19,12 @@ const RecentlyUpdatedCards = async () => {
 
   const data = await response.json();
   return (
-    <section >
+    <section>
       <div className="container mx-auto py-12 px-6">
         <Grid container spacing={4}>
           {data.slice(0, 12).map((item, i) => {
             return (
-              <Grid key={i} item lg={3} md={6} sm={12}>
+              <Grid sx={{ width: "100%" }} key={i} item lg={3} md={6} sm={12}>
                 <Card
                   sx={{
                     border: "none",
@@ -55,7 +55,6 @@ const RecentlyUpdatedCards = async () => {
                       </Typography>
                     </div>
                     <hr className="mb-2 border-0 h-1 bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300" />
-
                     <Typography
                       sx={{ fontSize: "15px" }}
                       className="mt-4 font-semibold text-indigo-500"

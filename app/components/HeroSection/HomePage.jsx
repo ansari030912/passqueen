@@ -42,23 +42,23 @@ const HomePage = () => {
               <div className="text-center text-transparent"></div>
               <div className="text-center p-4 border-white border-2 rounded-lg shadow-md w-full sm:w-1/2 md:w-auto flex-grow">
                 <span className="block text-2xl font-bold">20K+</span>
-                <span className="text-gray-600">Trust Vuexy</span>
+                <span className="text-gray-600">Monthly Users</span>
               </div>
               <div className="text-center p-4 border-white border-2 rounded-lg shadow-md w-full sm:w-1/2 md:w-auto flex-grow">
-                <span className="block text-2xl font-bold">5,000+</span>
-                <span className="text-gray-600">Resolved Tickets</span>
+                <span className="block text-2xl font-bold">2500+</span>
+                <span className="text-gray-600">Daily Updates</span>
               </div>
               <div className="text-center p-4 border-white border-2 rounded-lg shadow-md w-full sm:w-1/2 md:w-auto flex-grow">
-                <span className="block text-2xl font-bold">5,000+</span>
-                <span className="text-gray-600">Resolved Tickets</span>
+                <span className="block text-2xl font-bold">1500+</span>
+                <span className="text-gray-600">Trusted Brands</span>
               </div>
               <div className="text-center p-4 border-white border-2 rounded-lg shadow-md w-full sm:w-1/2 md:w-auto flex-grow">
-                <span className="block text-2xl font-bold">600+</span>
+                <span className="block text-2xl font-bold">20000+</span>
                 <span className="text-gray-600">5★ Reviews</span>
               </div>
               <div className="text-center p-4 border-white border-2 rounded-lg shadow-md w-full sm:w-1/2 md:w-auto flex-grow">
-                <span className="block text-2xl font-bold">600+</span>
-                <span className="text-gray-600">5★ Reviews</span>
+                <span className="block text-2xl font-bold">96.72%</span>
+                <span className="text-gray-600">Pass Rate</span>
               </div>
             </div>
           </div>

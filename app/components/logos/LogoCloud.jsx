@@ -15,7 +15,7 @@ const LogoCloud = () => {
                     minHeight: "130px",
                     boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
                   }}
-                  className="flex items-center bg-gray-200 bg-opacity-40 justify-center px-6 border-2 border-black rounded-md"
+                  className="flex items-center bg-white justify-center px-6 border-2 border-black rounded-md"
                 >
                   <img
                     className="h-20"
@@ -30,7 +30,7 @@ const LogoCloud = () => {
                     minHeight: "130px",
                     boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
                   }}
-                  className="flex items-center bg-gray-200 bg-opacity-40 justify-center px-6 border-2 border-black rounded-md"
+                  className="flex items-center bg-white justify-center px-6 border-2 border-black rounded-md"
                 >
                   <img
                     className="h-20"
@@ -45,7 +45,7 @@ const LogoCloud = () => {
                     minHeight: "130px",
                     boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
                   }}
-                  className="flex items-center bg-gray-200 bg-opacity-40 justify-center px-6 border-2 border-black rounded-md"
+                  className="flex items-center bg-white justify-center px-6 border-2 border-black rounded-md"
                 >
                   <img
                     className="h-20"
@@ -60,7 +60,7 @@ const LogoCloud = () => {
                     minHeight: "130px",
                     boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
                   }}
-                  className="flex items-center bg-gray-200 bg-opacity-40 justify-center px-6 border-2 border-black rounded-md"
+                  className="flex items-center bg-white justify-center px-6 border-2 border-black rounded-md"
                 >
                   <img
                     className="h-20"
@@ -75,7 +75,7 @@ const LogoCloud = () => {
                     minHeight: "130px",
                     boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
                   }}
-                  className="flex items-center bg-gray-200 bg-opacity-40 justify-center px-6 border-2 border-black rounded-md"
+                  className="flex items-center bg-white justify-center px-6 border-2 border-black rounded-md"
                 >
                   <img
                     className="h-16"
@@ -90,7 +90,7 @@ const LogoCloud = () => {
                     minHeight: "130px",
                     boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
                   }}
-                  className="flex items-center bg-gray-200 bg-opacity-40 justify-center px-6 border-2 border-black rounded-md"
+                  className="flex items-center bg-white justify-center px-6 border-2 border-black rounded-md"
                 >
                   <img className="h-20" src="/logo/pmi.png" alt="PMI logo" />
                 </div>

@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Navbar/Nav";
+import FooterMain from "./components/Footer/FooterMain";
 
 export const metadata = {
   title: "Project 4",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <body className="bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
         <Nav />
         {children}
+        <FooterMain />
       </body>
     </html>
   );
