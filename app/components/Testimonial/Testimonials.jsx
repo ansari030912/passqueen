@@ -360,21 +360,19 @@ const Testimonials = () => {
   };
 
   return (
-    <div  style={{
-      // backgroundImage: "url('/bg-2.png')",
-    }} className="py-12 bg-fixed bg-no-repeat bg-cover relative">
+    <div className="py-12 bg-white bg-fixed bg-no-repeat bg-cover relative">
       <div className="container mx-auto px-6">
         <div
           style={{
-            backgroundImage: "url('/bg.jpg')",
+            backgroundImage: "url('/bg-3.jpg')",
           }}
-          className="border-2 px-4 bg-fixed shadow-2xl bg-no-repeat bg-cover lg:px-8 py-6 rounded-3xl border-blue-200 "
+          className="border-2 px-4 shadow-2xl  bg-opacity-40 bg-no-repeat bg-cover lg:px-8 py-6 rounded-3xl border-blue-200 "
         >
-          <img className="mb-20 mx-auto h-14" src="/quote-icon.svg" alt="" />
+          <hr className="mb-20 mx-auto h-10 bg-transparent border-transparent"/>
           <div className="flex items-center justify-between gap-4 mb-16">
             <button
               onClick={prevSlide}
-              className="relative z-20 border-2 border-white w-16 h-16 p-5 hidden lg:flex items-center justify-center text-white hover:text-blue-400 hover:border-white transition duration-200 rounded-full"
+              className="relative z-20 border-2  border-white w-16 h-16 p-5 hidden lg:flex items-center justify-center text-white hover:text-blue-400 hover:border-white transition duration-200 rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -399,8 +397,15 @@ const Testimonials = () => {
               >
                 {reviews.map((review, index) => (
                   <div className="flex-shrink-0 w-full" key={index}>
-                    <p className="bg-clip-text text-transparent bg-gradient-to-r from-gray-50 via-slate-50 to-neutral-50 font-black text-2xl md:text-4xl text-center max-w-6xl mx-auto tracking-tight">
+                    <p className="bg-clip-text flex text-transparent bg-gradient-to-r from-gray-50 via-slate-50 to-neutral-50 font-black text-2xl md:text-4xl text-center max-w-6xl mx-auto tracking-tight">
+                      <img className="h-6 mr-3" src="/quote-icon.svg" alt="" />
                       {review.text}
+                      <img
+                        className="h-6 ml-3"
+                        src="/quote-icon.svg"
+                        alt=""
+                        style={{ transform: "scaleX(-1)" }}
+                      />
                     </p>
                   </div>
                 ))}

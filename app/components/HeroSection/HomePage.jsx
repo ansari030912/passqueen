@@ -65,7 +65,7 @@ const HomePage = () => {
 
           <div className="w-full lg:w-6/12 p-4 flex items-center justify-center">
             <img
-              src="/examprince-herosection.png"
+              src="/pass-queen-herosection.png"
               alt="Dashboard"
               className=""
             />

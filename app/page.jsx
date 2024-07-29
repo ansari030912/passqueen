@@ -1,8 +1,8 @@
 import HomePage from "./components/HeroSection/HomePage";
 import CertificationHome from "./components/HomeCert/CertificationHome";
-import HotExamCard from "./components/HotExams.jsx/HotExamCard";
 import HotExamIndex from "./components/HotExams.jsx/HotExamIndex";
 import LogoCloud from "./components/logos/LogoCloud";
+import PriceCard from "./components/Pricing/PriceCard";
 import RecentlyUpdatedCards from "./components/RecentlyUpdated/RecentlyUpdatedCards";
 import Testimonials from "./components/Testimonial/Testimonials";
 
@@ -11,9 +11,10 @@ export default function Home() {
     <>
       <HomePage />
       <CertificationHome />
-      <LogoCloud />
       <RecentlyUpdatedCards />
       <HotExamIndex />
+      <LogoCloud />
+      <PriceCard />
       <Testimonials />
     </>
   );

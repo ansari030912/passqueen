@@ -16,14 +16,14 @@ const Nav = () => {
               <div className="w-10/12 px-4">
                 <div className="flex items-center">
                   <Link
-                    className="inline-block h-5 mr-6 flex-shrink-0"
+                    className="inline-block h-5 mb-3 mr-6 flex-shrink-0"
                     href="#"
                   >
                     <img
-                      src="/img/examprince_dark_svg.svg"
+                      src="/img/pass_queen_dark.png"
                       height={"180px"}
                       width={"180px"}
-                      alt="Logo"
+                      alt="Pass Queen"
                     />
                   </Link>
                   <div className="hidden bg-gray-50 lg:flex w-full max-w-xs items-center px-6 border border-white rounded-full">
@@ -197,7 +197,7 @@ const Nav = () => {
             <a className="inline-block mr-auto" href="#">
               <img
                 className="h-8"
-                src="/img/examprince_dark_svg.svg"
+                src="/img/pass_queen_dark.png"
                 alt="Logo"
               />
             </a>

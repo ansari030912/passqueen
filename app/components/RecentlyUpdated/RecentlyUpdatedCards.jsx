@@ -22,14 +22,14 @@ const RecentlyUpdatedCards = async () => {
     <section>
       <div className="container mx-auto py-12 px-6">
         <Grid container spacing={4}>
-          {data.slice(0, 12).map((item, i) => {
+          {data.slice(0, 20).map((item, i) => {
             return (
               <Grid sx={{ width: "100%" }} key={i} item lg={3} md={6} sm={12}>
                 <Card
                   sx={{
                     border: "none",
                     boxShadow: "none",
-                    minHeight: "235px",
+                    minHeight: "245px",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
