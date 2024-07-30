@@ -98,10 +98,10 @@ const PriceCard = () => {
                   <hr className="h-6" />
                   <div class="text-center">
                     <a
-                      class="relative group inline-block py-4 px-5 items-center w-full text-orange-50 font-semibold bg-indigo-500 rounded-full overflow-hidden"
+                      class="relative group inline-block py-4 px-5 items-center w-full text-gray-50 hover:text-gray-700 font-semibold bg-indigo-500 rounded-full overflow-hidden"
                       href="#"
                     >
-                      <div class="absolute top-0 right-full w-full h-full bg-gray-800 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+                      <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
                         <span class="mr-2">Download for Windows (exe)</span>
                       </div>
@@ -109,10 +109,10 @@ const PriceCard = () => {
                   </div>
                   <div class="text-center -mb-6">
                     <a
-                      class="relative group inline-block py-4 px-5 items-center w-full text-orange-50 font-semibold bg-indigo-500 rounded-full overflow-hidden"
+                      class="relative group inline-block py-4 px-5 items-center w-full text-gray-50 hover:text-gray-700 font-semibold bg-indigo-500 rounded-full overflow-hidden"
                       href="#"
                     >
-                      <div class="absolute top-0 right-full w-full h-full bg-gray-800 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+                      <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
                         <span class="mr-2">Download for Windows (zip)</span>
                       </div>
@@ -201,10 +201,10 @@ const PriceCard = () => {
                   <hr className="h-6" />
                   <div class="text-center">
                     <a
-                      class="relative group inline-block py-4 px-5 -mb-6 items-center  w-full text-gray-900 hover:text-orange-50 font-semibold bg-white rounded-full overflow-hidden transition duration-300"
+                      class="relative group inline-block py-4 px-5 -mb-6 items-center  w-full text-gray-900 hover:text-gray-50 font-semibold bg-white rounded-full overflow-hidden transition duration-300"
                       href="#"
                     >
-                      <div class="absolute top-0 right-full w-full h-full bg-gray-800 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+                      <div class="absolute top-0 right-full w-full h-full bg-indigo-600 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
                         <span class="mr-2 font-bold">Add to Cart</span>
                       </div>
@@ -291,10 +291,10 @@ const PriceCard = () => {
                   <hr className="h-6" />
                   <div class="text-center">
                     <a
-                      class="relative group inline-block py-4 px-5 -mb-6 items-center  w-full text-orange-50 font-semibold bg-indigo-500 rounded-full overflow-hidden"
+                      class="relative group inline-block py-4 px-5 -mb-6 items-center  w-full text-gray-50 hover:text-gray-700 font-semibold bg-indigo-500 rounded-full overflow-hidden"
                       href="#"
                     >
-                      <div class="absolute top-0 right-full w-full h-full bg-gray-800 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
+                      <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
                         <span class="mr-2 font-bold">Add to Cart</span>
                       </div>

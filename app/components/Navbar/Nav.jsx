@@ -1,11 +1,166 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
-
+/* eslint-disable @next/next/no-img-element */
+import { Avatar, Card } from "@mui/material";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Nav = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [loginResponse, setLoginResponse] = useState(null);
+  const [cartResponce, setCartResponce] = useState(null);
+  const [searchData, setSearchData] = useState([]);
+  const [vendorData, setVendorData] = useState([]);
+  const [certificationData, setCertificationData] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("loginResponse");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${Base_URL}/v1/coupons`, {
+          headers: {
+            "x-api-key": X_API_Key,
+          },
+        });
+        localStorage.setItem("coupons", JSON.stringify(response.data));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      const storedLoginResponse = localStorage.getItem("loginResponse");
+      if (storedLoginResponse) {
+        setLoginResponse(JSON.parse(storedLoginResponse));
+      }
+    }
+    if (typeof localStorage !== "undefined") {
+      const storedLoginResponse = localStorage.getItem("CartProducts");
+      if (storedLoginResponse) {
+        setCartResponce(JSON.parse(storedLoginResponse));
+      }
+    }
+  }, []);
+
+  const truncatedEmail =
+    loginResponse?.email?.length > 10
+      ? `${loginResponse?.email?.slice(0, 10)}...`
+      : loginResponse?.email;
+  const truncatedName =
+    loginResponse?.name?.length > 12
+      ? `${loginResponse?.name?.slice(0, 12)}...`
+      : loginResponse?.name;
+
+  const toggleNav = () => {
+    setIsNavVisible(!isNavVisible);
+  };
+
+  const closeNav = () => {
+    setIsNavVisible(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSearch = (value) => {
+    setSearchValue(value);
+    router.push("#");
+  };
+
+  const filteredData = searchData
+    .filter((item) =>
+      item.code.toLowerCase().startsWith(searchValue.toLowerCase())
+    )
+    .slice(0, 30);
+
+  const filteredVendors = vendorData
+    .filter((item) =>
+      item.slug.toLowerCase().startsWith(searchValue.toLowerCase())
+    )
+    .slice(0, 10);
+
+  const filteredCertifications = certificationData
+    .filter((item) =>
+      item.slug.toLowerCase().startsWith(searchValue.toLowerCase())
+    )
+    .slice(0, 10);
+
+  const handleExamPage = (exam) => {
+    router.push(`/exam-training/${exam.vendor}/${exam.slug}`);
+    setSearchValue("");
+  };
+  const handleVendorPage = (exam) => {
+    router.push(`/exam-provider/${exam}`);
+    setSearchValue("");
+  };
+  const handleCertificationPage = (exam) => {
+    router.push(`/vendor-exam-training/${exam.vendor}/${exam.slug}`);
+    setSearchValue("");
+  };
+
+  const fetchData = async () => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        const storedExamData = localStorage.getItem("searchData");
+        if (storedExamData) {
+          setSearchData(JSON.parse(storedExamData));
+        } else {
+          const examResponse = await axios.get(
+            `https://dumpsarena.com/exam-search`
+          );
+          setSearchData(examResponse.data);
+          localStorage.setItem("searchData", JSON.stringify(examResponse.data));
+        }
+
+        const storedVendorData = localStorage.getItem("vendorData");
+        if (storedVendorData) {
+          setVendorData(JSON.parse(storedVendorData));
+        } else {
+          const vendorResponse = await axios.get(
+            `https://dumpsarena.com/vendor-search`
+          );
+          setVendorData(vendorResponse.data);
+          localStorage.setItem(
+            "vendorData",
+            JSON.stringify(vendorResponse.data)
+          );
+        }
+
+        const storedCertificationData =
+          localStorage.getItem("certificationData");
+        if (storedCertificationData) {
+          setCertificationData(JSON.parse(storedCertificationData));
+        } else {
+          const certificationResponse = await axios.get(
+            `https://dumpsarena.com/certification-search`
+          );
+          setCertificationData(certificationResponse.data);
+          localStorage.setItem(
+            "certificationData",
+            JSON.stringify(certificationResponse.data)
+          );
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <section>
@@ -31,6 +186,11 @@ const Nav = () => {
                       className="h-10 w-full bg-gray-50 border-0 text-sm text-gray-500 placeholder-gray-500 outline-none"
                       type="search"
                       placeholder="Search..."
+                      value={searchValue}
+                      onChange={(e) => {
+                        const { value } = e.target;
+                        handleSearch(value);
+                      }}
                     />
                     <button
                       className="inline-block ml-auto text-coolGray-400 hover:text-rhino-500"
@@ -62,17 +222,25 @@ const Nav = () => {
                   </div>
                 </div>
               </div>
-              <div className="hidden lg:flex items-center">
+              <div className="hidden lg:flex items-right">
                 <a
-                  className="inline-flex mr-10 items-center text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
+                  className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
                   href="#"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
-                    Vendors / Certs
+                    Vendors
                   </span>
                 </a>
                 <a
-                  className="inline-flex mr-10 items-center text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
+                  href="#"
+                >
+                  <span className="mr-2 underline-offset-2 font-bold">
+                    Certifications
+                  </span>
+                </a>
+                <a
+                  className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
                   href="#"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
@@ -80,7 +248,7 @@ const Nav = () => {
                   </span>
                 </a>
                 <a
-                  className="inline-flex items-center text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  className="inline-flex items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
                   href="#"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
@@ -111,7 +279,7 @@ const Nav = () => {
                         />
                       </svg>
                     </span>
-                    <span className="hidden xl:inline-block text-white font-semibold">
+                    <span className="hidden 2xl:inline-block text-white font-semibold">
                       Cart
                     </span>
                   </a>
@@ -136,7 +304,7 @@ const Nav = () => {
                         />
                       </svg>
                     </span>
-                    <span className="hidden xl:inline-block text-white font-semibold">
+                    <span className="hidden 2xl:inline-block text-white font-semibold">
                       Sign In / Sign Up
                     </span>
                   </a>
@@ -145,7 +313,19 @@ const Nav = () => {
             </div>
           </div>
           <hr className="bg-white border-white" style={{ paddingTop: "2px" }} />
-          <div className="flex w-full items-center justify-end lg:justify-center h-14 py-3 px-6 ">
+          <div className="flex w-full items-center justify-between lg:hidden h-14 py-3 px-6 ">
+            <div className="bg-gray-50 lg:flex w-full max-w-xs items-center px-6 border border-white rounded-full">
+              <input
+                className="h-10 w-full bg-gray-50 border-0 text-sm text-gray-500 placeholder-gray-500 outline-none"
+                type="search"
+                placeholder="Search..."
+                value={searchValue}
+                onChange={(e) => {
+                  const { value } = e.target;
+                  handleSearch(value);
+                }}
+              />
+            </div>
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
               className="lg:hidden text-coolGray-400 hover:text-coolGray-600"
@@ -195,11 +375,7 @@ const Nav = () => {
         <nav className="relative flex flex-col pt-12 pb-6 px-8 w-full h-full bg-white overflow-y-auto">
           <div className="flex mb-12 items-center">
             <a className="inline-block mr-auto" href="#">
-              <img
-                className="h-8"
-                src="/img/pass_queen_dark.png"
-                alt="Logo"
-              />
+              <img className="h-8" src="/img/pass_queen_dark.png" alt="Logo" />
             </a>
             <button onClick={() => setMobileNavOpen(!mobileNavOpen)}>
               <svg
@@ -219,40 +395,7 @@ const Nav = () => {
               </svg>
             </button>
           </div>
-          <div className="flex w-full max-w-xs items-center px-6 border border-coolGray-200 rounded-full">
-            <input
-              className="h-12 w-full bg-transparent border-0 text-sm text-coolGray-500 placeholder-coolGray-500 outline-none"
-              type="search"
-              placeholder="Search..."
-            />
-            <button
-              className="inline-block ml-auto text-coolGray-400 hover:text-rhino-500"
-              type="submit"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.33333 11.6667C9.27885 11.6667 11.6667 9.27885 11.6667 6.33333C11.6667 3.38782 9.27885 1 6.33333 1C3.38782 1 1 3.38782 1 6.33333C1 9.27885 3.38782 11.6667 6.33333 11.6667Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M13.0001 13L10.1001 10.1"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
+
           <div className="py-12 mb-auto">
             <ul className="flex-col">
               <li className="mb-3">
@@ -429,11 +572,167 @@ const Nav = () => {
           </div>
           <div>
             <p className="text-center text-sm text-coolGray-400">
-              Coleos Shuffle 2023
+              passqueen.com
             </p>
           </div>
         </nav>
       </div>
+      {searchValue && (
+        <div>
+          <ul
+            style={{
+              backgroundColor: "white",
+              color: "gray",
+              padding: "0",
+              margin: "0",
+              listStyle: "none",
+              position: "absolute",
+              left: 0,
+              borderRadius: "0px",
+            }}
+            className="lg:z-50 w-full"
+          >
+            <Card
+              sx={{ maxHeight: "500px", overflowY: "auto", padding: "10px" }}
+            >
+              <li
+                style={{
+                  padding: "10px",
+                  border: "1px solid #7274F2",
+                  textAlign: "center",
+                }}
+              >
+                <b>See all search for &quot;{searchValue}&quot;</b>
+              </li>
+              <li
+                className="bg-indigo-500 text-white font-bold text-xl text-center"
+                style={{
+                  padding: "10px",
+                  borderTop: "1px solid #7274F2",
+                  borderLeft: "1px solid #7274F2",
+                  borderRight: "1px solid #7274F2",
+                  borderBottom: "1px solid #7274F2",
+                }}
+              >
+                Exams - {filteredData.length}
+              </li>
+              {filteredData.map((item, index) => (
+                <div
+                  key={item.code}
+                  onClick={() => handleExamPage(item)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <li
+                    style={{
+                      padding: "10px",
+                      borderTop: "1px solid #7274F2",
+                      borderLeft: "1px solid #7274F2",
+                      borderRight: "1px solid #7274F2",
+                      borderBottom: "1px solid #7274F2",
+                    }}
+                    className="hover:bg-gray-200 flex"
+                  >
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/package-small-min_optimized.png"
+                      className="mr-3 mt-1"
+                      variant="rounded"
+                    />
+                    <div>
+                      <div className="text-gray-700 font-bold">
+                        {item.code} - ({item.code})
+                      </div>
+                      <div>{item.name}</div>
+                    </div>
+                  </li>
+                </div>
+              ))}
+              <li
+                className="bg-indigo-500 text-white font-bold text-xl text-center"
+                style={{
+                  padding: "10px",
+                  borderTop: "1px solid #7274F2",
+                  borderLeft: "1px solid #7274F2",
+                  borderRight: "1px solid #7274F2",
+                  borderBottom: "1px solid #7274F2",
+                }}
+              >
+                Vendors - {filteredVendors.length}
+              </li>
+              {filteredVendors.map((item, index) => (
+                <div
+                  key={item.code}
+                  onClick={() => handleVendorPage(item.slug)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <li
+                    style={{
+                      padding: "10px",
+                      borderTop: "1px solid #7274F2",
+                      borderLeft: "1px solid #7274F2",
+                      borderRight: "1px solid #7274F2",
+                      borderBottom: "1px solid #7274F2",
+                    }}
+                    className="hover:bg-gray-200 flex"
+                  >
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/img-1.png"
+                      className="mr-3 mt-1"
+                      variant="rounded"
+                    />
+                    <div>
+                      <div className="text-gray-700 font-bold">{item.slug}</div>
+                      <div>{item.name}</div>
+                    </div>
+                  </li>
+                </div>
+              ))}
+              <li
+                className="bg-indigo-500 text-white font-bold text-xl text-center"
+                style={{
+                  padding: "10px",
+                  borderTop: "1px solid #7274F2",
+                  borderLeft: "1px solid #7274F2",
+                  borderRight: "1px solid #7274F2",
+                  borderBottom: "1px solid #7274F2",
+                }}
+              >
+                Certifications - {filteredCertifications.length}
+              </li>
+              {filteredCertifications.map((item, index) => (
+                <div
+                  key={item.code}
+                  onClick={() => handleCertificationPage(item)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <li
+                    style={{
+                      padding: "10px",
+                      borderTop: "1px solid #7274F2",
+                      borderLeft: "1px solid #7274F2",
+                      borderRight: "1px solid #7274F2",
+                      borderBottom: "1px solid #7274F2",
+                    }}
+                    className="hover:bg-gray-200 flex"
+                  >
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/package-small-min_optimized.png"
+                      className="mr-3 mt-1"
+                      variant="rounded"
+                    />
+                    <div>
+                      <div className="text-gray-700 font-bold">{item.slug}</div>
+                      <div>{item.name}</div>
+                    </div>
+                  </li>
+                </div>
+              ))}
+            </Card>
+          </ul>
+        </div>
+      )}
     </section>
   );
 };
