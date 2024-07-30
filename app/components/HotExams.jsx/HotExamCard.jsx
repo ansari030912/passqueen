@@ -11,7 +11,7 @@ const HotExamCard = ({ data }) => {
 
   return (
     <section className="bg-white">
-      <div className="container py-12 flex justify-center mx-auto px-8">
+      <div className="container py-12 flex justify-center mx-auto px-4 lg:px-0">
         <Grid
           container
           className="flex justify-center lg:justify-start"
