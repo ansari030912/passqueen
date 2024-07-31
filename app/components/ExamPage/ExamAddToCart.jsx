@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { Grid } from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -12,13 +13,9 @@ const ExamAddToCart = ({ examData }) => {
     examData.exam_prices[0]
   );
 
-  const handleChange = (event) => {
-    const newSelectedCart = event.target.value;
-    setSelectedOption(newSelectedCart);
-    const newSelectedProduct = examData.exam_prices.find(
-      (price) => price.cart === newSelectedCart
-    );
-    setSelectedProduct(newSelectedProduct);
+  const handleChange = (selectedCart, product) => {
+    setSelectedOption(selectedCart);
+    setSelectedProduct(product);
   };
 
   const handleAddToCart = () => {
@@ -28,11 +25,12 @@ const ExamAddToCart = ({ examData }) => {
       examTitle: examData?.exam_title,
       selectedProduct,
     });
+    // You can add more logic here to actually add the product to the cart.
   };
 
   return (
     <div className="px-6 w-full rounded-3xl ">
-      <div className=" border-b border-t lg:border-t-0 border-gray-300">
+      <div className="border-b border-t lg:border-t-0 border-gray-300">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
             <span className="block text-red-500 font-serif text-lg font-semibold line-through mb-1">
@@ -94,34 +92,39 @@ const ExamAddToCart = ({ examData }) => {
           </div>
         </div>
       </div>
-      <div className="pt-8">
-        <div className="sm:flex w-full mb-8">
+      <div className="pt-5">
+        <div className="sm:flex w-full mb-6">
           <div className="w-full">
             <span className="block mb-3 rounded-xl w-full font-bold text-gray-800">
               Select Product
             </span>
-            <select
-              className="bg-transparent rounded-xl w-full border border-gray-300 pl-2 bg-white py-4 text-blue-500 font-semibold outline-none"
-              value={selectedOption}
-              onChange={handleChange}
-            >
+
+            <Grid container spacing={1}>
               {examData.exam_prices.map((price, index) => (
-                <option
-                  className=" bg-white py-6 font-semibold text-gray-900"
-                  key={index}
-                  value={price.cart}
-                >
-                  {price.title} -{" "}
-                  <span className="text-blue-500 font-serif">
-                    %{price?.off} OFF
-                  </span>
-                </option>
+                <Grid item xs={12} md={6} key={index}>
+                  <div
+                    onClick={() => handleChange(price.cart, price)}
+                    className={`bg-indigo-50 flex justify-between border-2 mb-2 cursor-pointer ${
+                      selectedOption === price.cart
+                        ? "border-indigo-300"
+                        : "border-indigo-50"
+                    } text-sm rounded-xl text-center py-2 px-2 font-bold`}
+                  >
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                      {price.title}
+                    </span>
+                    <span className="text-blue-500 font-serif">
+                      % {price?.off} OFF
+                    </span>
+                  </div>
+                </Grid>
               ))}
-            </select>
+            </Grid>
           </div>
         </div>
+        <div className="border-t mb-4 border-gray-300"></div>
         <button
-          className="inline-block rounded-2xl px-12 w-full py-4 text-center text-white font-bold opacity-90 border-2 border-indigo-300 bg-indigo-500 hover:bg-indigo-600 bg-opacity-90 hover:bg-opacity-90 transition duration-200"
+          className="inline-block rounded-2xl px-12 w-full  py-4 text-center text-white font-bold opacity-90 border-2 border-indigo-300 bg-indigo-500 hover:bg-indigo-600 bg-opacity-90 hover:bg-opacity-90 transition duration-200"
           onClick={handleAddToCart}
         >
           Add to Cart

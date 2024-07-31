@@ -2,13 +2,19 @@
 import { Card, Grid, Typography } from "@mui/material";
 import BackCountDown from "../BackCount/BackCountDown";
 import ExamAddToCart from "./ExamAddToCart";
+import Link from "next/link";
 
 const ProductSection = ({ examData }) => {
   return (
-    <section className="py-12 md:py-14">
+    <section className="pb-6 pt-12">
       <div className="container mx-auto px-4">
         <Grid container spacing={2}>
           <Grid item xs={12} lg={7}>
+            <div className="bg-indigo-100 mt-6 px-4 md:text-center py-4 rounded-2xl">
+              <div className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-b from-gray-600 via-gray-600 to-gray-600">
+                {examData?.exam_code} : Exam Training - {examData?.exam_title}
+              </div>
+            </div>
             <div className="p-6 w-full">
               <div className="">
                 <div className="flex justify-between">
@@ -29,11 +35,12 @@ const ProductSection = ({ examData }) => {
                     attempt 100% success.
                   </p>
                   <ol className="list-disc pl-4 mt-2 text-base mb-2 text-indigo-500">
-                    <li> Verified By IT Certified Experts</li>
+                    <li>Verified By IT Certified Experts</li>
                     <li>100% Accurate Answers</li>
                     <li>100% Money Back Guarantee</li>
                     <li>Instant Downloads</li>
                     <li>Free Fast Exam Updates</li>
+                    <li>96.6% World Wide Exam Pass Rate.</li>
                   </ol>
                   <div class="flex flex-wrap items-center gap-2 mt-4 -mb-6">
                     <div class="flex gap-1">
@@ -114,7 +121,7 @@ const ProductSection = ({ examData }) => {
                   </Grid>
                   <Grid item md={7}>
                     <h4 className="font-heading mt-10 font-semibold text-2xl text-gray-700 mb-3">
-                      {examData?.exam_title}
+                      {examData?.exam_title} Study Meterial & Test Engine
                     </h4>
                     <p className="text-gray-500 max-w-7xl font-semibold text-base">
                       Everything you need to prepare, learn & pass your
@@ -123,15 +130,15 @@ const ProductSection = ({ examData }) => {
                     </p>
 
                     <ol className="list-disc pl-4 mt-2 text-base mb-2 text-indigo-500">
-                      <li> Verified By IT Certified Experts</li>
+                      <li>Verified By IT Certified Experts</li>
                       <li>100% Accurate Answers</li>
-                      <li>100% Money Back Guarantee</li>
                       <li>Instant Downloads</li>
+                      <li>100% Money Back Guarantee</li>
                       <li>Free Fast Exam Updates</li>
                     </ol>
                     <Grid container spacing={2}>
                       <Grid item md={12}>
-                        <div class="flex flex-wrap items-center gap-2 ">
+                        <div class="flex flex-wrap items-center gap-2">
                           <div class="flex gap-1">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -201,30 +208,14 @@ const ProductSection = ({ examData }) => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Card
-                      sx={{
-                        px: "15px",
-                        py: "25px",
-                        textAlign: "center",
-                        boxShadow: "inset 0px 0px 8px rgba(0, 0, 0, 0.5)",
-                      }}
-                      className="bg-indigo-100 -mt-6"
+                  <Grid item xs={12} className="border-t border-gray-300">
+                    <Link
+                      href={`https://dumpsarena.com/demo-dl-pdf/4e2da258b7b54f8b9a870c00182efbb2`}
                     >
-                      <Typography fontSize={20} fontWeight={700}>
-                        <span style={{ color: "#7274F2" }}>
-                          Limited Time Mega Sale!
-                        </span>{" "}
-                        <span style={{ color: "#DC3545" }}>(40-70% OFF)</span>
-                      </Typography>
-                      <Typography
-                        fontSize={14}
-                        fontWeight={600}
-                        color={"#7274F2"}
-                      >
-                        offer ends in <BackCountDown /> Hurry up!
-                      </Typography>
-                    </Card>
+                      <button className="inline-block rounded-2xl  px-12 w-full py-4 text-center text-white font-bold opacity-90 border-2 border-red-300 bg-red-500 hover:bg-red-600 bg-opacity-90 hover:bg-opacity-90 transition duration-200">
+                        Download Free Demo PDF
+                      </button>
+                    </Link>
                   </Grid>
                 </Grid>
               </div>
