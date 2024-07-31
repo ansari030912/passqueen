@@ -1,8 +1,9 @@
 import ProductSection from "@/app/components/ExamPage/ExamProducts";
-import HotExamIndex from "@/app/components/HotExams.jsx/HotExamIndex";
+import ExamPageHotExam from "@/app/components/HotExams.jsx/ExamPageHotExam";
 import ReleatedExams from "@/app/components/HotExams.jsx/ReleatedExams";
-import ExamCloudLogo from "@/app/components/logos/ExamCloudLogo";
 import LogoCloud from "@/app/components/logos/LogoCloud";
+import HowToBuy from "@/app/components/Stats/HowToBuy";
+import StatsCard from "@/app/components/Stats/StatsCard";
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 import { Grid } from "@mui/material";
@@ -50,8 +51,9 @@ const page = async ({ params, searchParams }) => {
         examData={examData}
         releatedData={releatedData}
       />
-      {/* <ExamCloudLogo /> */}
-      <HotExamIndex />
+      <HowToBuy />
+      <StatsCard examData={examData} />
+      <ExamPageHotExam data={data} />
       <LogoCloud />
       <ReleatedExams releatedData={releatedData} />
       <div className="container my-8 mx-auto">
@@ -60,7 +62,6 @@ const page = async ({ params, searchParams }) => {
             <div className="p-5 lg:p-9 h-full border bg-gray-50 rounded-3xl border-gray-200 shadow-xl">
               <h2 className="font-bold mb-12 text-center text-4xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 {examData?.exam_title} - FAQ&apos;S
-                {/* <hr className="mb-2 border-0 h-1 my-10 bg-gray-600" /> */}
               </h2>
               {examData.exam_faqs.map((item, i) => {
                 return (

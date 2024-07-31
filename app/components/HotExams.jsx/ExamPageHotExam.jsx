@@ -1,9 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-
-import { Card, Grid, Typography } from "@mui/material";
+"use client";
+import { useState } from "react";
+import { Card, Grid, Typography, ButtonGroup, Button } from "@mui/material";
 import Link from "next/link";
 
-const ReleatedExams = ({ releatedData }) => {
+const ExamPageHotExam = ({ data }) => {
+  const [view, setView] = useState("monthly");
+
+  const exams = view === "monthly" ? data.month : data.week;
+
   return (
     <section className="bg-white">
       <div className="container py-12 flex justify-center mx-auto px-4 lg:px-0">
@@ -18,11 +23,32 @@ const ReleatedExams = ({ releatedData }) => {
                 PASSQUEEN.COM
               </span>
               <h1 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                <span>Releated Exam</span>
+                <span>Hot Exams</span>
+                <span
+                  className={`font-serif italic cursor-pointer ${
+                    view === "monthly" ? "text-blue-500" : ""
+                  }`}
+                  onClick={() => setView("monthly")}
+                >
+                  {" "}
+                  Monthly
+                </span>{" "}
+                &{" "}
+                <span
+                  className={`font-serif italic cursor-pointer ${
+                    view === "weekly" ? "text-blue-500" : ""
+                  }`}
+                  onClick={() => setView("weekly")}
+                >
+                  Weekly
+                </span>
               </h1>
+              {/* <p className="text-gray-500">
+                Risus viverra justo sagittis vestibulum metus.
+              </p> */}
             </div>
           </Grid>
-          {releatedData.slice(0, 6).map((exam) => (
+          {exams.slice(0, 9).map((exam) => (
             <Grid
               sx={{ width: "100%" }}
               item
@@ -73,8 +99,7 @@ const ReleatedExams = ({ releatedData }) => {
                         href={`/exam-training/${exam.vendor_perma}/${exam.exam_perma}`}
                         className="bg-indigo-500 opacity-90 px-6 py-3 font-bold rounded-lg shadow-lg border-indigo-400 text-white shadow-neutral-300 border-2"
                       >
-                        BUY NOW{" "}
-                        <span className="font-base">({exam.exam_code})</span>
+                        BUY NOW <span className="font-base">({exam.exam_code})</span>
                       </Link>
                     </div>
                   </div>
@@ -95,4 +120,4 @@ const ReleatedExams = ({ releatedData }) => {
   );
 };
 
-export default ReleatedExams;
+export default ExamPageHotExam;
