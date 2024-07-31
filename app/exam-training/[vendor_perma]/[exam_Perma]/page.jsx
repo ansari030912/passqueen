@@ -1,5 +1,8 @@
 import ProductSection from "@/app/components/ExamPage/ExamProducts";
 import HotExamIndex from "@/app/components/HotExams.jsx/HotExamIndex";
+import ReleatedExams from "@/app/components/HotExams.jsx/ReleatedExams";
+import ExamCloudLogo from "@/app/components/logos/ExamCloudLogo";
+import LogoCloud from "@/app/components/logos/LogoCloud";
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 import { Grid } from "@mui/material";
@@ -47,7 +50,10 @@ const page = async ({ params, searchParams }) => {
         examData={examData}
         releatedData={releatedData}
       />
+      {/* <ExamCloudLogo /> */}
       <HotExamIndex />
+      <LogoCloud />
+      <ReleatedExams releatedData={releatedData} />
       <div className="container my-8 mx-auto">
         <Grid container className="">
           <Grid item md={12}>

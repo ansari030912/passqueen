@@ -82,7 +82,7 @@ const RecentlyUpdatedCards = async () => {
                   <div className="absolute inset-0 bg-indigo-50 bg-opacity-70 backdrop-blur-sm flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Link
                       style={{ fontSize: "14px" }}
-                      href={"/"}
+                      href={`/exam-training/${item.exam_vendor_perma}/${item.exam_perma}`}
                       className="bg-indigo-500 opacity-90 px-6 py-3 font-black rounded-lg shadow-lg border-indigo-400 text-white shadow-neutral-300 border-2"
                     >
                       Buy Now

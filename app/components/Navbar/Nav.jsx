@@ -172,7 +172,7 @@ const Nav = () => {
                 <div className="flex items-center">
                   <Link
                     className="inline-block h-5 mb-3 mr-6 flex-shrink-0"
-                    href="#"
+                    href="/"
                   >
                     <img
                       src="/img/pass_queen_dark.png"
