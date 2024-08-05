@@ -10,9 +10,9 @@ const ProductSection = ({ examData }) => {
         <Grid
           container
           spacing={2}
-          sx={{ boxShadow: "inset 0px 0px 10px 1px rgba(0, 0, 0, 0.1)" }}
+          // sx={{ boxShadow: "inset 0px 0px 10px 1px rgba(0, 0, 0, 0.1)" }}
 
-          className=" rounded-3xl bg-white pb-10"
+          // className=" rounded-3xl bg-white pb-10"
         >
           <Grid item xs={12} lg={7}>
             <div className="pr-4 lg:pl-4">
