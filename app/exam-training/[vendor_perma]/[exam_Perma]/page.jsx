@@ -51,8 +51,8 @@ const page = async ({ params, searchParams }) => {
         examData={examData}
         releatedData={releatedData}
       />
-      <HowToBuy />
       <StatsCard examData={examData} />
+      <HowToBuy />
       <ExamPageHotExam data={data} />
       <LogoCloud />
       <ReleatedExams releatedData={releatedData} />
@@ -63,7 +63,7 @@ const page = async ({ params, searchParams }) => {
               <h2 className="font-bold mb-12 text-center text-4xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 {examData?.exam_title} - FAQ&apos;S
               </h2>
-              {examData.exam_faqs.map((item, i) => {
+              {examData?.exam_faqs?.map((item, i) => {
                 return (
                   <div key={i}>
                     <h3 className="font-black text-gray-600 text-lg mb-3">

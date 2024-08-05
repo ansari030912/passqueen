@@ -102,7 +102,7 @@ const Nav = () => {
     setSearchValue("");
   };
   const handleVendorPage = (exam) => {
-    router.push(`/exam-provider/${exam}`);
+    router.push(`/exam-training-provider/${exam}`);
     setSearchValue("");
   };
   const handleCertificationPage = (exam) => {
@@ -225,7 +225,7 @@ const Nav = () => {
               <div className="hidden lg:flex items-right">
                 <a
                   className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
-                  href="#"
+                  href="/exam-training-providers"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
                     Vendors
@@ -233,7 +233,7 @@ const Nav = () => {
                 </a>
                 <a
                   className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
-                  href="#"
+                  href="/exam-certification-providers"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
                     Certifications
@@ -249,7 +249,7 @@ const Nav = () => {
                 </a>
                 <a
                   className="inline-flex items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
-                  href="#"
+                  href="/video-taining-providers"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
                     Video Courses

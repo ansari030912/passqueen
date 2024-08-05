@@ -1,8 +1,8 @@
 const HowToBuy = () => {
   return (
-    <section className=" mb-10 bg-opacity-50 overflow-hidden">
+    <section className=" py-10 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="py-8 px-8 bg-white rounded-3xl">
+        <div className="py-8 px-8 bg-gray-50 rounded-3xl">
           <div className="max-w-9xl mx-auto">
             <div className="flex justify-center flex-wrap -m-3">
               <div className="w-full md:w-1/2 lg:w-1/4 p-3">

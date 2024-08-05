@@ -1,7 +1,8 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
-import IconButton from "@mui/material/IconButton";
 import { useEffect, useState } from "react";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
 const CertificationHome = () => {
   const exams = [
@@ -334,14 +335,13 @@ const CertificationHome = () => {
       rating: 4.5,
     },
   ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
 
   useEffect(() => {
     const updateItemsToShow = () => {
       if (window.innerWidth >= 1024) {
-        setItemsToShow(5);
+        setItemsToShow(6);
       } else if (window.innerWidth >= 768) {
         setItemsToShow(3);
       } else {
@@ -370,85 +370,98 @@ const CertificationHome = () => {
   };
 
   return (
-    <section className="bg-white relative">
-      <div className="container mx-auto p-6 relative">
-        <IconButton
-          onClick={handlePrevSlide}
-          className="hidden lg:flex text-gray-500 p-2 rounded-full absolute left-0 top-1/2 transform -translate-y-1/2 z-10"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="2em"
-            height="2em"
-            viewBox="0 0 24 24"
-          >
-            <g fill="none" fill-rule="evenodd">
-              <path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
-              <path
-                fill="currentColor"
-                d="M8.293 12.707a1 1 0 0 1 0-1.414l5.657-5.657a1 1 0 1 1 1.414 1.414L10.414 12l4.95 4.95a1 1 0 0 1-1.414 1.414z"
-              />
-            </g>
-          </svg>
-        </IconButton>
-        <IconButton
-          onClick={handleNextSlide}
-          className="hidden lg:flex text-gray-500 p-2 rounded-full absolute right-0 top-1/2 transform -translate-y-1/2 z-10"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="2em"
-            height="2em"
-            viewBox="0 0 24 24"
-          >
-            <g fill="none" fill-rule="evenodd">
-              <path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
-              <path
-                fill="currentColor"
-                d="M15.707 11.293a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 1 1-1.414-1.414l4.95-4.95l-4.95-4.95a1 1 0 0 1 1.414-1.414z"
-              />
-            </g>
-          </svg>
-        </IconButton>
-        <div className="grid grid-cols-1 lg:px-12 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <section style={{ backgroundColor: "white", position: "relative" }}>
+      <div className="container mx-auto"
+        style={{
+          // maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "24px",
+          position: "relative",
+        }}
+      >
+        <Grid container spacing={2} style={{ paddingLeft: "48px", paddingRight: "48px" }}>
           {exams
             .slice(currentIndex, currentIndex + itemsToShow)
             .map((deal, index) => (
-              <div
-                key={index}
-                className="p-4 relative transition-shadow duration-300 ease-in-out rounded-xl hover:bg-gray-50 hover:shadow-lg"
-              >
-                <img
-                  src={`/certs/${deal.image}.png`}
-                  alt={deal.name}
-                  className="w-full h-72 md:h-52 mb-4 rounded transition-transform duration-300 ease-in-out hover:scale-105"
-                />
-                <p className="text-gray-900 text-center font-semibold text-sm mb-2 transition-colors duration-300 ease-in-out hover:text-black">
-                  {deal.name}
-                </p>
-                <div className="flex justify-center items-center mb-2">
-                  <div className="text-yellow-400 text-center">
-                    {"★".repeat(Math.floor(deal.rating))}
-                    {"☆".repeat(5 - Math.floor(deal.rating))}
+              <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
+                <div
+                  style={{
+                    padding: "16px",
+                    position: "relative",
+                    transition: "box-shadow 300ms ease-in-out",
+                    borderRadius: "16px",
+                    backgroundColor: "white",
+                    hoverBackgroundColor: "#f8f8f8",
+                    hoverBoxShadow: "0 10px 15px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <img
+                    src={`/certs/${deal.image}.png`}
+                    alt={deal.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      marginBottom: "16px",
+                      borderRadius: "8px",
+                      transition: "transform 300ms ease-in-out",
+                      hoverTransform: "scale(1.05)",
+                    }}
+                  />
+                  <p
+                    style={{
+                      color: "#1a202c",
+                      textAlign: "center",
+                      fontWeight: "600",
+                      fontSize: "14px",
+                      marginBottom: "8px",
+                      transition: "color 300ms ease-in-out",
+                      hoverColor: "black",
+                    }}
+                  >
+                    {deal.name}
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    <div style={{ color: "#f6ad55", textAlign: "center" }}>
+                      {"★".repeat(Math.floor(deal.rating))}
+                      {"☆".repeat(5 - Math.floor(deal.rating))}
+                    </div>
+                    <span style={{ marginLeft: "8px", color: "#a0aec0" }}>
+                      {deal.rating}
+                    </span>
                   </div>
-                  <span className="ml-2 text-gray-500">{deal.rating}</span>
                 </div>
-              </div>
+              </Grid>
             ))}
-        </div>
-        <div className="lg:hidden flex justify-between items-center mt-4">
-          <button
+        </Grid>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "16px",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
             onClick={handlePrevSlide}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
           >
-            Previous
-          </button>
-          <button
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             onClick={handleNextSlide}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
           >
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </section>

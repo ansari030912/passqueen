@@ -7,10 +7,10 @@ import React, { useState } from "react";
 
 const ExamAddToCart = ({ examData }) => {
   const [selectedOption, setSelectedOption] = useState(
-    examData.exam_prices[0]?.cart
+    examData?.exam_prices[0]?.cart
   );
   const [selectedProduct, setSelectedProduct] = useState(
-    examData.exam_prices[0]
+    examData?.exam_prices[0]
   );
 
   const handleChange = (selectedCart, product) => {
@@ -25,7 +25,6 @@ const ExamAddToCart = ({ examData }) => {
       examTitle: examData?.exam_title,
       selectedProduct,
     });
-    // You can add more logic here to actually add the product to the cart.
   };
 
   return (
@@ -33,10 +32,10 @@ const ExamAddToCart = ({ examData }) => {
       <div className="border-b border-t lg:border-t-0 border-gray-300">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
-            <span className="block text-red-500 font-serif text-lg font-semibold line-through mb-1">
+            <span className="block text-red-500  text-lg font-semibold line-through mb-1">
               ${selectedProduct?.full_price} USD
             </span>
-            <h4 className="text-2xl font-bold font-serif text-green-500 mb-1">
+            <h4 className="text-2xl font-bold  text-green-500 mb-1">
               ${selectedProduct?.price} USD
             </h4>
           </div>
@@ -83,7 +82,7 @@ const ExamAddToCart = ({ examData }) => {
                 <Link
                   key={i}
                   className="hover:underline text-right text-indigo-500"
-                  href={`/vendor-mock-exam/${examData?.exam_vendor_perma}/${item?.cert_perma}`}
+                  href={`/vendor-exam-training/${examData?.exam_vendor_perma}/${item?.cert_perma}`}
                 >
                   {item.cert_title},{"  "}
                 </Link>
@@ -113,8 +112,8 @@ const ExamAddToCart = ({ examData }) => {
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                       {price.title}
                     </span>
-                    <span className="text-blue-500 font-serif">
-                      % {price?.off} OFF
+                    <span className="text-blue-500 ">
+                      {price?.off}% OFF
                     </span>
                   </div>
                 </Grid>

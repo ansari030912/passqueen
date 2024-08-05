@@ -43,9 +43,6 @@ const HotExamCard = ({ data }) => {
                   Weekly
                 </span>
               </h1>
-              {/* <p className="text-gray-500">
-                Risus viverra justo sagittis vestibulum metus.
-              </p> */}
             </div>
           </Grid>
           {exams.slice(0, 9).map((exam) => (
@@ -68,7 +65,7 @@ const HotExamCard = ({ data }) => {
                   "&:hover .overlay": {
                     opacity: 1,
                   },
-                  minHeight: "130px",
+                  minHeight: "100px",
                 }}
                 className="bg-gray-50"
               >

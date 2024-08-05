@@ -1,24 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
-import { Card, Grid, Typography } from "@mui/material";
-import BackCountDown from "../BackCount/BackCountDown";
-import ExamAddToCart from "./ExamAddToCart";
+import { Grid } from "@mui/material";
 import Link from "next/link";
+import ExamAddToCart from "./ExamAddToCart";
 
 const ProductSection = ({ examData }) => {
   return (
-    <section className="pb-6 pt-12">
+    <section className="pb-6 pl-4 pt-12 mb-6">
       <div className="container mx-auto px-4">
-        <Grid container spacing={2}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ boxShadow: "inset 0px 0px 10px 1px rgba(0, 0, 0, 0.1)" }}
+
+          className=" rounded-3xl bg-white pb-10"
+        >
           <Grid item xs={12} lg={7}>
-            <div className="bg-indigo-100 mt-6 px-4 md:text-center py-4 rounded-2xl">
-              <div className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-b from-gray-600 via-gray-600 to-gray-600">
-                {examData?.exam_code} : Exam Training - {examData?.exam_title}
+            <div className="pr-4 lg:pl-4">
+              <div className="bg-indigo-50 border-4 border-gray-100 lg:mt-6 px-4 md:text-center py-4 rounded-2xl">
+                <div className="lg:text-xl font-black text-indigo-500">
+                  {examData?.exam_code} : Exam Training - {examData?.exam_title}
+                </div>
               </div>
             </div>
             <div className="p-6 w-full">
               <div className="">
                 <div className="flex justify-between">
-                  <span className="inline-block text-xl text-indigo-500 font-black">
+                  <span className="inline-block text-xl text-stone-500 font-black">
                     {examData?.exam_vendor_title}
                   </span>
                   <span className="text-gray-600 font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
