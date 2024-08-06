@@ -24,7 +24,7 @@ const page = async ({ params, searchParams }) => {
   const releatedData = await releatedExams.json();
 
   const examResponce = await fetch(
-    `${Base_URL}/v1/exam/${params.exam_perma}?coupon=MEGASALE-30`,
+    `${Base_URL}/v1/exam/${params?.exam_perma}?coupon=MEGASALE-30`,
     {
       headers: {
         "x-api-key": X_API_Key,
