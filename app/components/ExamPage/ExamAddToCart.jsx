@@ -7,10 +7,10 @@ import React, { useState } from "react";
 
 const ExamAddToCart = ({ examData }) => {
   const [selectedOption, setSelectedOption] = useState(
-    examData?.exam_prices[0]?.cart
+    examData?.exam_prices?.[0]?.cart || null
   );
   const [selectedProduct, setSelectedProduct] = useState(
-    examData?.exam_prices[0]
+    examData?.exam_prices?.[0] || null
   );
 
   const handleChange = (selectedCart, product) => {
@@ -26,6 +26,10 @@ const ExamAddToCart = ({ examData }) => {
       selectedProduct,
     });
   };
+
+  if (!examData || !examData.exam_prices || examData.exam_prices.length === 0) {
+    return <div>No exam data available.</div>;
+  }
 
   return (
     <div className="px-6 w-full rounded-3xl ">
