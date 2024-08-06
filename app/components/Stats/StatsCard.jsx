@@ -165,7 +165,7 @@ const StatsCard = ({ examData }) => {
                 </div>
               );
             })}
-            {examData.exam_topics.map((item, i) => {
+            {examData?.exam_topics?.map((item, i) => {
               return (
                 <div class="w-full sm:w-1/2 lg:w-auto p-2" key={i}>
                   <span class="border-2 border-indigo-100 rounded-xl hover:bg-indigo-50 bg-gray-50 text-gray-600 font-semibold hover:text-indigo-600 px-4 h-14 flex items-center justify-center transition duration-200">
