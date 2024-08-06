@@ -8,7 +8,6 @@ import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 
 import { Grid } from "@mui/material";
-import axios from "axios";
 
 const page = async ({ params, searchParams }) => {
   const referral = searchParams?.ref || "";
@@ -24,7 +23,7 @@ const page = async ({ params, searchParams }) => {
 
   const releatedData = await releatedExams.json();
 
-  const examResponce = await axios.get(
+  const examResponce = await fetch(
     `${Base_URL}/v1/exam/${params?.exam_perma}?coupon=MEGASALE-30`,
     {
       headers: {
@@ -33,7 +32,7 @@ const page = async ({ params, searchParams }) => {
     }
   );
 
-  const examData = await examResponce.data;
+  const examData = await examResponce.json();
   console.log("🚀 ~ page ~ examData:", examData);
 
   const response = await fetch(`${Base_URL}/v1/hot_exams`, {
