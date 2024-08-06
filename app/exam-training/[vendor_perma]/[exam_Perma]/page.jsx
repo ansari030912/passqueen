@@ -13,7 +13,7 @@ const page = async ({ params, searchParams }) => {
   const referral = searchParams?.ref || "";
 
   const examResponce = await fetch(
-    `https://certsgang.com/v1/exam/${params?.exam_perma}?coupon=MEGASALE-30`,
+    `https://certsgang.com/v1/exam/a10-system-administration?coupon=MEGASALE-30`,
     {
       headers: {
         "x-api-key": "b46279cb-13bb-4445-a6f9-6f252b61ae79",
