@@ -12,6 +12,17 @@ import { Grid } from "@mui/material";
 const page = async ({ params, searchParams }) => {
   const referral = searchParams?.ref || "";
 
+  const examResponce = await fetch(
+    `https://certsgang.com/v1/exam/${params?.exam_perma}?coupon=MEGASALE-30`,
+    {
+      headers: {
+        "x-api-key": "b46279cb-13bb-4445-a6f9-6f252b61ae79",
+      },
+    }
+  );
+
+  const examData = await examResponce.json();
+  console.log("🚀 ~ page ~ examData:", examData);
   const releatedExams = await fetch(
     `${Base_URL}/v1/related_exams/${params?.vendor_perma}`,
     {
@@ -22,18 +33,6 @@ const page = async ({ params, searchParams }) => {
   );
 
   const releatedData = await releatedExams.json();
-
-  const examResponce = await fetch(
-    `${Base_URL}/v1/exam/${params?.exam_perma}?coupon=MEGASALE-30`,
-    {
-      headers: {
-        "x-api-key": X_API_Key,
-      },
-    }
-  );
-
-  const examData = await examResponce.json();
-  console.log("🚀 ~ page ~ examData:", examData);
 
   const response = await fetch(`${Base_URL}/v1/hot_exams`, {
     headers: {
