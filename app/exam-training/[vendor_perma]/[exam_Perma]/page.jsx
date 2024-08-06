@@ -9,9 +9,12 @@ import { Base_URL } from "@/app/URL's/Base_URL";
 
 import { Grid } from "@mui/material";
 
-const page = async ({ params}) => {
+const page = async ({ params }) => {
   // const referral = searchParams?.ref || "";
-  // , searchParams 
+  // , searchParams
+
+  const { exam_perma } = params;
+  console.log("🚀 ~ page ~ exam_perma:", exam_perma);
 
   const examResponce = await fetch(
     `https://certsgang.com/v1/exam/${params?.exam_perma}?coupon=MEGASALE-30`,
@@ -46,6 +49,7 @@ const page = async ({ params}) => {
 
   return (
     <>
+      <div>{exam_perma}</div>
       <ProductSection
         data={data}
         examData={examData}
