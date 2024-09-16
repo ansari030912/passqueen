@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Grid } from "@mui/material";
+import { Grid, Snackbar, Alert } from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -12,6 +12,9 @@ const ExamAddToCart = ({ examData }) => {
   const [selectedProduct, setSelectedProduct] = useState(
     examData?.exam_prices?.[0] || null
   );
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
   const handleChange = (selectedCart, product) => {
     setSelectedOption(selectedCart);
@@ -19,12 +22,33 @@ const ExamAddToCart = ({ examData }) => {
   };
 
   const handleAddToCart = () => {
-    console.log({
-      examVendorTitle: examData?.exam_vendor_title,
-      examCode: examData?.exam_code,
-      examTitle: examData?.exam_title,
-      selectedProduct,
-    });
+    const cartProduct = selectedProduct?.cart;
+
+    // Retrieve existing cart from local storage
+    let existingCart = JSON.parse(localStorage.getItem("CartProducts")) || [];
+
+    // Check if the selected exam is already in the cart
+    const isItemInCart = existingCart.some((item) => item.cart === cartProduct);
+
+    if (isItemInCart) {
+      // Show error Snackbar for item already in cart
+      setSnackbarMessage("Item already in cart");
+      setSnackbarSeverity("error");
+      setOpenSnackbar(true);
+    } else {
+      // Add new exam to the cart
+      existingCart.push({ cart: cartProduct });
+      localStorage.setItem("CartProducts", JSON.stringify(existingCart));
+
+      // Show success Snackbar for item added to cart
+      setSnackbarMessage("Item added to cart successfully");
+      setSnackbarSeverity("success");
+      setOpenSnackbar(true);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   if (!examData || !examData.exam_prices || examData.exam_prices.length === 0) {
@@ -116,9 +140,7 @@ const ExamAddToCart = ({ examData }) => {
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                       {price.title}
                     </span>
-                    <span className="text-blue-500 ">
-                      {price?.off}% OFF
-                    </span>
+                    <span className="text-blue-500 ">{price?.off}% OFF</span>
                   </div>
                 </Grid>
               ))}
@@ -127,12 +149,27 @@ const ExamAddToCart = ({ examData }) => {
         </div>
         <div className="border-t mb-4 border-gray-300"></div>
         <button
-          className="inline-block rounded-2xl px-12 w-full  py-4 text-center text-white font-bold opacity-90 border-2 border-indigo-300 bg-indigo-500 hover:bg-indigo-600 bg-opacity-90 hover:bg-opacity-90 transition duration-200"
+          className="inline-block rounded-2xl px-12 w-full py-4 text-center text-white font-bold opacity-90 border-2 border-indigo-300 bg-indigo-500 hover:bg-indigo-600 bg-opacity-90 hover:bg-opacity-90 transition duration-200"
           onClick={handleAddToCart}
         >
           Add to Cart
         </button>
       </div>
+
+      {/* Snackbar for success or error messages */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbarSeverity}
+          sx={{ width: "100%" }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

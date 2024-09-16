@@ -125,18 +125,18 @@ const FooterMain = () => {
             </div>
           </div>
           <div class="flex flex-wrap -m-4">
-            <div class="w-full md:w-1/3 p-4">
+            <div class="w-full md:w-1/2 p-4">
               <p class="text-gray-500">© 2024 passqueen.com</p>
             </div>
-            <div class="w-full md:w-1/3 p-4">
-              <div class="flex md:justify-center flex-wrap gap-4">
+            <div class="w-full md:w-1/2 p-4">
+              <div class="flex md:justify-end flex-wrap gap-4">
                 <img class="h-6" src="/img/visa-logo.svg" alt="" />
                 <img class="h-6" src="/img/mastercard-logo.svg" alt="" />
-                <img class="h-6" src="/img/paypal-logo.svg" alt="" />
-                <img class="h-6" src="/img/amex-logo.svg" alt="" />
+                {/* <img class="h-6" src="/img/paypal-logo.svg" alt="" /> */}
+                {/* <img class="h-6" src="/img/amex-logo.svg" alt="" /> */}
               </div>
             </div>
-            <div class="w-full md:w-1/3 p-4">
+            {/* <div class="w-full md:w-1/3 p-4">
               <div class="flex md:justify-end flex-wrap gap-6">
                 <a
                   href="#"
@@ -190,7 +190,7 @@ const FooterMain = () => {
                   </svg>
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

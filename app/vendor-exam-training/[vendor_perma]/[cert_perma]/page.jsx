@@ -22,7 +22,8 @@ const page = async ({ params }) => {
       <div className="px-6 container mx-auto w-full rounded-3xl">
         <h1 className="text-center text-3xl md:text-4xl ">
           <span className="bg-clip-text font-bold mr-6 text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-            {examData.vendor_title} <span className="text-gray-700">- Certification Exams</span>
+            {examData.vendor_title}{" "}
+            <span className="text-gray-700">- Certification Exams</span>
           </span>
         </h1>
         <div className=" border-t-2 border-gray-200 mt-6">

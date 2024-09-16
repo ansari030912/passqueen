@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import Link from "next/link";
 
 const CertificationHome = () => {
   const exams = [
@@ -371,7 +372,8 @@ const CertificationHome = () => {
 
   return (
     <section style={{ backgroundColor: "white", position: "relative" }}>
-      <div className="container mx-auto"
+      <div
+        className="container mx-auto"
         style={{
           // maxWidth: "1200px",
           margin: "0 auto",
@@ -379,63 +381,75 @@ const CertificationHome = () => {
           position: "relative",
         }}
       >
-        <Grid container spacing={2} style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+        <Grid
+          container
+          spacing={2}
+          style={{ paddingLeft: "48px", paddingRight: "48px" }}
+        >
           {exams
             .slice(currentIndex, currentIndex + itemsToShow)
             .map((deal, index) => (
               <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
                 <div
+                  className="hover:shadow-xl rounded-sm cursor-pointer"
                   style={{
                     padding: "16px",
                     position: "relative",
                     transition: "box-shadow 300ms ease-in-out",
-                    borderRadius: "16px",
+                    borderRadius: "6px",
                     backgroundColor: "white",
                     hoverBackgroundColor: "#f8f8f8",
                     hoverBoxShadow: "0 10px 15px rgba(0, 0, 0, 0.1)",
                   }}
                 >
-                  <img
-                    src={`/certs/${deal.image}.png`}
-                    alt={deal.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      marginBottom: "16px",
-                      borderRadius: "8px",
-                      transition: "transform 300ms ease-in-out",
-                      hoverTransform: "scale(1.05)",
-                    }}
-                  />
-                  <p
-                    style={{
-                      color: "#1a202c",
-                      textAlign: "center",
-                      fontWeight: "600",
-                      fontSize: "14px",
-                      marginBottom: "8px",
-                      transition: "color 300ms ease-in-out",
-                      hoverColor: "black",
-                    }}
+                  <Link
+                    href={`/vendor-exam-training/${deal.vendorPerma}/${deal.perma}`}
                   >
-                    {deal.name}
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    <div style={{ color: "#f6ad55", textAlign: "center" }}>
-                      {"★".repeat(Math.floor(deal.rating))}
-                      {"☆".repeat(5 - Math.floor(deal.rating))}
+                    <div className="fle">
+                      {" "}
+                      <img
+                        src={`/certs/${deal.image}.png`}
+                        alt={deal.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          marginBottom: "16px",
+                          borderRadius: "8px",
+                          transition: "transform 300ms ease-in-out",
+                          hoverTransform: "scale(1.05)",
+                        }}
+                      />
                     </div>
-                    <span style={{ marginLeft: "8px", color: "#a0aec0" }}>
-                      {deal.rating}
-                    </span>
-                  </div>
+                    <p
+                      style={{
+                        color: "#1a202c",
+                        textAlign: "center",
+                        fontWeight: "600",
+                        fontSize: "14px",
+                        marginBottom: "8px",
+                        transition: "color 300ms ease-in-out",
+                        hoverColor: "black",
+                      }}
+                    >
+                      {deal.name}
+                    </p>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      <div style={{ color: "#f6ad55", textAlign: "center" }}>
+                        {"★".repeat(Math.floor(deal.rating))}
+                        {"☆".repeat(5 - Math.floor(deal.rating))}
+                      </div>
+                      <span style={{ marginLeft: "8px", color: "#a0aec0" }}>
+                        {deal.rating}
+                      </span>
+                    </div>
+                  </Link>
                 </div>
               </Grid>
             ))}
@@ -448,18 +462,10 @@ const CertificationHome = () => {
             marginTop: "16px",
           }}
         >
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handlePrevSlide}
-          >
+          <Button variant="contained" color="primary" onClick={handlePrevSlide}>
             Back
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleNextSlide}
-          >
+          <Button variant="contained" color="primary" onClick={handleNextSlide}>
             Next
           </Button>
         </div>

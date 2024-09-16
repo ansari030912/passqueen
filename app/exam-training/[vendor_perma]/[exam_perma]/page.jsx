@@ -1,3 +1,4 @@
+import CommentPostCard from "@/app/components/Comment/CommentPostCard";
 import ProductSection from "@/app/components/ExamPage/ExamProducts";
 import ExamPageHotExam from "@/app/components/HotExams.jsx/ExamPageHotExam";
 import ReleatedExams from "@/app/components/HotExams.jsx/ReleatedExams";
@@ -82,6 +83,7 @@ const page = async ({ params, searchParams }) => {
           </Grid>
         </Grid>
       </div>
+      <CommentPostCard />
     </>
   );
 };

@@ -1,0 +1,451 @@
+/* eslint-disable @next/next/no-img-element */
+"use client";
+import { X_API_Key } from "@/app/URL's/Api_X_Key";
+import { Base_URL } from "@/app/URL's/Base_URL";
+import withAuth from "@/app/auth/RouterAuth";
+import { Icon } from "@iconify/react";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Container,
+  Divider,
+  Grid,
+} from "@mui/material";
+import axios from "axios"; // Import axios since it's being used
+import { useEffect, useState } from "react";
+
+const ScAccess = ({ params }) => {
+  const [data, setData] = useState(null);
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [selectedLecture, setSelectedLecture] = useState(null);
+  const [currentSource, setCurrentSource] = useState(null);
+
+  const handleClickOpen = (lecture) => {
+    setSelectedLecture(lecture);
+    setCurrentSource(lecture?.lecture_videos[0]); // Set the initial source to the first video
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedLecture(null);
+    setCurrentSource(null); // Reset the source when the dialog is closed
+  };
+
+  const handleSourceChange = (source) => {
+    setCurrentSource(source); // Change the video source
+  };
+
+  const handleChange = (index) => {
+    setExpandedIndex(index === expandedIndex ? null : index);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const loginResponse = JSON.parse(localStorage.getItem("loginResponse"));
+      if (loginResponse) {
+        try {
+          const response = await axios.get(
+            `${Base_URL}/v1/account/sc-access/${params.id_one}/${params.id_two}`,
+            {
+              headers: {
+                "x-api-key": X_API_Key,
+                Authorization: `Bearer ${loginResponse._token}`,
+              },
+            }
+          );
+          setData(response.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [params.id_one, params.id_two]);
+
+  return (
+    <Container maxWidth="xl">
+      <Grid container spacing={2}>
+        <Grid item xs={12}></Grid>
+        <Grid item xs={12}>
+          <div className="container px-4 mx-auto">
+            <div className="py-4 text-white">
+              <div className="">
+                <div className="rounded-3xl ring-1 ring-transparent lg:mx-0 lg:flex lg:max-w-none">
+                  <div className="py-8 sm:py-10 w-full">
+                    <h3 className="text-2xl max-w-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                      {data?.title}
+                    </h3>
+                    <p className="mt-6 text-base w-full leading-7 text-gray-500">
+                      <span className="block max-w-4xl">
+                        Get ready for your exam by enrolling in our
+                        comprehensive training course. This course includes a
+                        full set of instructional videos designed to equip you
+                        with in-depth knowledge essential for passing the
+                        certification exam with flying colors.
+                      </span>
+                    </p>
+                    <div className="mt-10 flex items-center gap-x-4">
+                      <h4 className="flex-none text-xl font-semibold leading-6 text-gray-600">
+                        What’s included
+                      </h4>
+                      <div className="h-px flex-auto bg-gray-600"></div>
+                    </div>
+                    <ul
+                      role="list"
+                      className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+                    >
+                      <li className="flex gap-x-3 ">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.8em"
+                          height="1.8em"
+                          viewBox="0 0 128 128"
+                        >
+                          <path
+                            fill="#01579b"
+                            d="M118.03 102.32L72.29 123c-2.82 1.33-5.76 1.2-8.46-.36L6.09 93.32c-1.65-1.06-2.14-2.61-2.04-3.69c.1-1.08.35-2.25 3.25-3.09l4.28-1.58l57.92 31.57l41.16-16.82z"
+                          />
+                          <path
+                            fill="#f5f5f5"
+                            d="M71.74 119.69a7.951 7.951 0 0 1-7.26-.26L8.11 91.03c-.8-.44-1.04-1.45-.56-2.23c1.24-2.05 3.52-8.53-.24-13.91l63.66 30.65z"
+                          />
+                          <path
+                            fill="#94c6d6"
+                            d="m115.59 99.98l-43.85 19.71c-1.45.63-4.34 1.75-7.67-.49c2.63.19 4.48-.9 5.43-2.67c.93-1.72.65-4.54-.48-6.13c-.69-.96-2.54-2.49-3.35-3.35L113.1 88.5c4.2-1.73 8.14.86 8.77 4.01c.7 3.56-3.84 6.47-6.28 7.47"
+                          />
+                          <path
+                            fill="#01579b"
+                            d="m117.78 86.96l-45.27 20.2c-2.85 1.13-6.04.98-8.77-.4L5.9 77.38c-.56-.28-1.39-1.05-1.72-2.1c-.54-1.75.14-3.95 2.19-4.65l62.68 31.95l42.92-18.37z"
+                          />
+                          <path
+                            fill="#0091ea"
+                            d="m121.19 89.89l-4.93-1.79l-10.16.59l-33.58 14.99c-2.85 1.13-6.04.98-8.77-.4L5.9 73.91c-1.49-.76-1.17-2.97.47-3.28l41.69-18.65c1.19-.22 2.41-.09 3.52.38l59.49 28.36s9.45 6.47 10.12 9.17"
+                          />
+                          <path
+                            fill="#616161"
+                            d="M105.53 88.98s6.26-2.45 11.18-2.23c4.92.22 6.63 3.67 6.63 3.67c-.93-4.23-5.3-6.39-5.3-6.39l-65-32.73c-.45-.19-2.11-.58-4.66.47c-2.06.85-8.79 4-8.79 4z"
+                          />
+                          <path
+                            fill="#424242"
+                            d="M123.62 91.22c-.47-1.87-1.63-3.87-3.77-4.84c-2.82-1.27-6.84-.94-9.41.4l-4.91 2.18v3.46l6.21-2.76c6.04-2.69 8.72 1.34 8.95 2.29c.96 3.87-.9 6.11-6.39 8.63l-8.92 4.02v3.48l10.26-4.57c4.54-1.82 9.72-5.24 7.98-12.29"
+                          />
+                          <path
+                            fill="#01579b"
+                            d="M33.01 90.31L15.74 66.44l2.71-1.21l19.43 26.7zm22.15 11l-3.08-2.44l53.45-10.91v1.75l-7.49 2.84z"
+                          />
+                          <path
+                            fill="#9ccc65"
+                            d="M14.8 46.18L82.31 34.9l29.49 32.47c1.49 1.57.68 4.17-1.44 4.6l-69.7 14.3z"
+                          />
+                          <path
+                            fill="#689f38"
+                            d="M110.36 69.17L41.14 83.19l-.22 3.3l69.44-14.24c1.96-.41 2.78-2.65 1.71-4.23c-.38.56-.96 1-1.71 1.15m3.73 15.13c.73 1.16.07 2.69-1.27 2.96L49.1 100.18c-3.83.79-7.59-1.72-7.93-5.62c-.29-3.3 1.94-6.29 5.19-6.97l61.28-13.76z"
+                          />
+                          <path
+                            fill="#616161"
+                            d="M55.59 80.1L30.21 43.78l-14.48 3.83c-3.35 3.33-2.1 8.8-2.1 8.8S35.8 91.99 39.3 96.54c3.5 4.55 8.61 3.84 8.61 3.84l8.63-1.74l-.9-16.1z"
+                          />
+                          <path
+                            fill="#424242"
+                            d="M55.59 80.34L43.4 82.86c-3.33.75-3.93 3.88-3.93 3.88L10.04 44.57s-4.19 5.07-1.41 9.38L39.3 96.54c3.35 4.77 8.61 3.88 8.61 3.88l8.63-1.74l-.89-15.78z"
+                          />
+                          <path
+                            fill="#b9e4ea"
+                            d="M110.25 83c.31.68-.09 1.47-.82 1.62L48.5 97.12c-3.83.79-6.54-1.75-6.4-5.21c.18-4.37 2.63-6.22 5.87-6.89l61.23-12.51s-2.08 2.34-.49 6.72c.54 1.51 1.12 2.85 1.54 3.77"
+                          />
+                          <path
+                            fill="none"
+                            stroke="#424242"
+                            stroke-miterlimit="10"
+                            stroke-width="2.07"
+                            d="M45.21 83.7L19.1 46.76"
+                          />
+                          <path
+                            fill="#424242"
+                            d="M47.26 67.95L13.68 51.03l-1.36 2.68l38.8 19.77z"
+                          />
+                          <path
+                            fill="#689f38"
+                            d="m108.79 64.03l-2.46-2.7L68.5 78.69L47.26 68.18l3.62 5.18l14.07 7.19l10.48-1.61z"
+                          />
+                          <path
+                            fill="#c62828"
+                            d="M118.02 57.35L72.29 78.03c-2.82 1.33-5.76 1.2-8.46-.36L6.09 48.35c-1.65-1.06-2.14-2.61-2.04-3.69s.35-2.25 3.25-3.09l2.71-1l59.32 29.11l48.17-19.93z"
+                          />
+                          <path
+                            fill="#f5f5f5"
+                            d="M71.73 74.72a7.951 7.951 0 0 1-7.26-.26L8.1 46.06c-.8-.44-1.04-1.45-.56-2.23c1.24-2.05 3.52-8.53-.24-13.91l62.24 31.66z"
+                          />
+                          <path
+                            fill="#94c6d6"
+                            d="M115.58 55.01L71.73 74.72c-1.45.63-4.34 1.75-7.67-.49c2.63.19 4.48-.9 5.43-2.67c.93-1.72.65-4.54-.48-6.13c-.69-.96-2.54-2.49-3.35-3.35l47.43-18.55c4.2-1.73 8.14.86 8.77 4.01c.7 3.56-3.84 6.47-6.28 7.47"
+                          />
+                          <path
+                            fill="#c62828"
+                            d="m117.78 41.99l-45.27 20.2c-2.85 1.13-6.04.98-8.77-.4L5.89 32.41c-.6-.3-1.5-1.07-1.79-2.16c-.43-1.62.13-3.75 2.26-4.59l53.01-11.23z"
+                          />
+                          <path
+                            fill="#f44336"
+                            d="m121.18 44.92l-4.93-1.79l-10.16.59l-33.58 14.99c-2.85 1.13-6.04.98-8.77-.4L5.89 28.93c-1.49-.76-.96-2.77.47-3.28l41.7-18.64c1.19-.22 2.41-.09 3.52.38l59.49 28.36s9.44 6.46 10.11 9.17"
+                          />
+                          <path
+                            fill="#616161"
+                            d="M105.53 44s5.21-1.83 10.13-1.61c4.92.22 7.69 3.05 7.69 3.05c-1.01-4.52-5.3-6.39-5.3-6.39l-65-32.73c-.45-.19-2.11-.58-4.66.47c-2.06.85-8.79 4-8.79 4z"
+                          />
+                          <path
+                            fill="#424242"
+                            d="M111.48 41.86L44.97 8.31l2.2-.99l67.64 33.9z"
+                          />
+                          <path
+                            fill="#424242"
+                            d="M123.61 46.25c-.47-1.87-1.26-3.68-3.49-4.62c-2.85-1.2-5.45-1.45-9.69.18l-4.91 2.18v3.46l6.21-2.76c3.15-1.48 7.79-1.16 8.95 2.29c1.27 3.78-.9 6.11-6.39 8.63l-8.92 4.02v3.48l10.26-4.57c4.55-1.82 9.73-5.24 7.98-12.29"
+                          />
+                        </svg>
+                        <span className="text-lg font-bold text-gray-500">
+                          {data?.lectures} : Lectures
+                        </span>
+                      </li>
+                      <li className="flex gap-x-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1.8em"
+                          height="1.8em"
+                          viewBox="0 0 72 72"
+                        >
+                          <circle
+                            cx="35.905"
+                            cy="36.014"
+                            r="27.035"
+                            fill="#fcea2b"
+                          />
+                          <circle
+                            cx="36.006"
+                            cy="36.037"
+                            r="21.871"
+                            fill="white"
+                          />
+                          <path
+                            fill="none"
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M55.11 25.38a21.863 21.863 0 1 1-8.095-8.245"
+                          />
+                          <path
+                            fill="none"
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M62.94 35.997a27.046 27.046 0 1 1-5.266-16.038"
+                          />
+                          <path
+                            fill="none"
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m47.394 21.578l11.038-1.16l-1.16-11.038m-7.297 26.974H35.891V18.52m0 35.391v-3.845M21.143 36.354h-3.057h0"
+                          />
+                          <circle cx="35.891" cy="36.354" r="3.737" />
+                          <circle cx="48.694" cy="47.937" r="1.48" />
+                          <circle cx="23.087" cy="24.717" r="1.48" />
+                          <circle cx="23.087" cy="47.937" r="1.48" />
+                        </svg>
+                        <span className="text-lg font-bold text-gray-500">
+                          {data?.duration} : Duration
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0 lg:border-l-2 lg:ml-5 bg-transparent">
+                    <div className="rounded-2xl bg-transparent py-2 lg:px-3 text-center  lg:flex lg:flex-col lg:justify-center lg:py-6">
+                      <div className="mx-auto max-w-xs">
+                        <img
+                          src={`https://video.dumpsarena.com/img/${data?.image}`}
+                          alt={data?.title}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Grid>
+        <Grid item xs={12}>
+          <div className="bg-gray-50 flex flex-col items-center justify-center relative overflow-hidden">
+            {data?.sections?.map((item, index) => {
+              const {
+                section_title,
+                secion_lectures,
+                secion_duration,
+                lectures,
+              } = item;
+              return (
+                <Accordion
+                  className="text-white"
+                  key={index}
+                  expanded={index === expandedIndex}
+                  onChange={() => handleChange(index)}
+                  sx={{ width: "100%", mb: "4px", bgcolor: "#7175F2" }}
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      <Icon
+                        icon="material-symbols:expand-more"
+                        width="1.2em"
+                        height="1.2em"
+                        style={{ color: "white" }}
+                      />
+                    }
+                    aria-controls={`panel${index + 1}-content`}
+                    id={`panel${index + 1}-header`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <Icon
+                        icon="streamline:live-video-solid"
+                        width="1.2em"
+                        height="1.2em"
+                        style={{ color: "white" }}
+                      />
+                      <h4 className="font-medium text-sm text-white">
+                        {section_title}
+                      </h4>
+                    </div>
+                  </AccordionSummary>
+                  <Divider color="white" />
+                  <AccordionDetails>
+                    <div className="w-full bg-white p-1 mt-2">
+                      <table className="min-w-full">
+                        <thead>
+                          <tr>
+                            <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-500 tracking-wider">
+                              No. Lectures
+                            </th>
+                            <th className="px-6 py-3 border-b-2 hidden lg:table-cell border-gray-300 text-sm leading-4 text-gray-500 text-right tracking-wider">
+                              Duration
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white">
+                          {lectures.map((lecture, lectureIndex) => {
+                            const {
+                              lecture_seq,
+                              lecture_title,
+                              lecture_duration,
+                            } = lecture;
+                            return (
+                              <tr key={lectureIndex}>
+                                <td
+                                  onClick={() => handleClickOpen(lecture)}
+                                  className="px-6 py-2 whitespace-no-wrap cursor-pointer border-b text-justify border-gray-500 text-blue-900 text-md leading-5"
+                                >
+                                  {lecture_seq}.{" "}
+                                  <span className="hover:underline">
+                                    {lecture_title}
+                                  </span>
+                                  <span className="lg:hidden">
+                                    <span className="relative inline-block px-3 py-1 font-semibold text-red-500 leading-tight">
+                                      <span
+                                        aria-hidden
+                                        className="absolute inset-0"
+                                      ></span>
+                                      <span className="relative text-xs">
+                                        - {lecture_duration}
+                                      </span>
+                                    </span>
+                                  </span>
+                                </td>
+                                <td className="px-6 py-2 hidden lg:table-cell whitespace-no-wrap border-b text-blue-900 border-gray-500 text-md text-right leading-5">
+                                  <span className="relative inline-block px-3 py-1 font-semibold text-red-500 leading-tight">
+                                    <span
+                                      aria-hidden
+                                      className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                                    ></span>
+                                    <span className="relative text-xs">
+                                      {lecture_duration}
+                                    </span>
+                                  </span>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </AccordionDetails>
+                </Accordion>
+              );
+            })}
+          </div>
+        </Grid>
+      </Grid>
+      {open && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg w-11/12 md:w-2/3 lg:w-1/2">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="text-xl font-semibold">
+                {selectedLecture?.lecture_title}
+              </h2>
+              <button onClick={handleClose} className="text-red-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-x"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div className="p-4">
+              <video
+                key={currentSource?.source} // Key prop forces video reload when source changes
+                controls
+                className="w-full h-64"
+              >
+                <source
+                  src={currentSource?.source}
+                  type={`video/${currentSource?.type}`}
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="p-4 border-t flex justify-between">
+              <div className="flex justify-center space-x-2">
+                {selectedLecture?.lecture_videos.map((video, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSourceChange(video)}
+                    className={`px-4 py-2 rounded-md ${
+                      currentSource?.source === video.source
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 text-gray-800"
+                    }`}
+                  >
+                    Source {index + 1}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </Container>
+  );
+};
+
+export default withAuth(ScAccess);

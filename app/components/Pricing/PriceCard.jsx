@@ -1,9 +1,51 @@
+"use client";
+import { Icon } from "@iconify/react";
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import { Snackbar, SnackbarContent } from "@mui/material";
+import Link from "next/link";
+import React, { useState } from "react";
 
-const PriceCard = () => {
+const UnlimitedPage = ({ data }) => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarColor, setSnackbarColor] = useState("green");
+
+  const handleBoxClick = (item) => {
+    const existingCartData =
+      JSON.parse(localStorage.getItem("CartProducts")) || [];
+
+    const isItemInCart = existingCartData.some(
+      (cartItem) => cartItem.cart === item.cart
+    );
+
+    if (!isItemInCart) {
+      const cartData = {
+        cart: item.cart,
+        saveExam: true,
+      };
+
+      existingCartData.push(cartData);
+
+      localStorage.setItem("CartProducts", JSON.stringify(existingCartData));
+
+      setSnackbarMessage("Product added to cart!");
+      setSnackbarColor("green");
+      setSnackbarOpen(true);
+
+      window.location.reload();
+    } else {
+      setSnackbarMessage("Item already in the cart!");
+      setSnackbarColor("red");
+      setSnackbarOpen(true);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
+  };
+
   return (
-    <section class="relative py-20 overflow-hidden bg-indigo-50">
+    <section className="py-12">
       <div class="container px-4 mx-auto">
         <div class="max-w-4xl mx-auto mb-12 text-center">
           <span class="inline-block py-1 px-3 mb-4 text-xs font-semibold bg-indigo-500 text-indigo-100 rounded-full">
@@ -15,8 +57,13 @@ const PriceCard = () => {
             <span class="font-serif italic">PDF Download Access</span>
           </h1>
           <p className="text-gray-600 font-semibold text-xl mt-5">
-            All Exams List Available in Unlimited Test Engine & PDF Download
-            Access
+            <Link
+              href={"/all-te-exams-list"}
+              className="text-base font-bold text-blue-500 hover:underline"
+            >
+              All Exams List Available in Unlimited Test Engine & PDF Download
+              Access
+            </Link>
           </p>
         </div>
         <div class="max-w-8xl mx-auto">
@@ -32,7 +79,7 @@ const PriceCard = () => {
                     />
                     <div class="relative text-center">
                       <span class="inline-block py-1.5 px-5 mb-6 font-semibold text-indigo-500 bg-indigo-100 rounded-full">
-                        Free Unlimited Access
+                        Free Test Engine Software
                       </span>
                       <span class="block text-5xl font-bold">$0.00</span>
                     </div>
@@ -103,7 +150,7 @@ const PriceCard = () => {
                     >
                       <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
-                        <span class="mr-2">Download for Windows (exe)</span>
+                        <span class="mr-2">Download for Windows .exe</span>
                       </div>
                     </a>
                   </div>
@@ -114,7 +161,7 @@ const PriceCard = () => {
                     >
                       <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
-                        <span class="mr-2">Download for Windows (zip)</span>
+                        <span class="mr-2">Download for Windows .zip</span>
                       </div>
                     </a>
                   </div>
@@ -199,16 +246,16 @@ const PriceCard = () => {
                     </li>
                   </ul>
                   <hr className="h-6" />
-                  <div class="text-center">
-                    <a
+                  <div class="text-center cursor-pointer">
+                    <butto
+                      onClick={() => handleBoxClick({ cart: data.pdf_cart })}
                       class="relative group inline-block py-4 px-5 -mb-6 items-center  w-full text-gray-900 hover:text-gray-50 font-semibold bg-white rounded-full overflow-hidden transition duration-300"
-                      href="#"
                     >
                       <div class="absolute top-0 right-full w-full h-full bg-indigo-600 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
                         <span class="mr-2 font-bold">Add to Cart</span>
                       </div>
-                    </a>
+                    </butto>
                   </div>
                 </div>
               </div>
@@ -290,15 +337,15 @@ const PriceCard = () => {
                   </ul>
                   <hr className="h-6" />
                   <div class="text-center">
-                    <a
+                    <button
+                      onClick={() => handleBoxClick({ cart: data.te_cart })}
                       class="relative group inline-block py-4 px-5 -mb-6 items-center  w-full text-gray-50 hover:text-gray-700 font-semibold bg-indigo-500 rounded-full overflow-hidden"
-                      href="#"
                     >
                       <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
                       <div class="relative flex items-center justify-center">
                         <span class="mr-2 font-bold">Add to Cart</span>
                       </div>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -306,8 +353,36 @@ const PriceCard = () => {
           </div>
         </div>
       </div>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <SnackbarContent
+          sx={{
+            backgroundColor: snackbarColor,
+          }}
+          message={
+            <span style={{ display: "flex", alignItems: "center" }}>
+              <Icon
+                icon={
+                  snackbarColor === "green"
+                    ? "mdi:cart-outline"
+                    : "mdi:alert-circle-outline"
+                }
+                width="1.6em"
+                height="1.4em"
+                style={{ color: "white", marginRight: "2px" }}
+              />
+              {snackbarMessage}
+            </span>
+          }
+        />
+      </Snackbar>
     </section>
   );
 };
 
-export default PriceCard;
+export default UnlimitedPage;

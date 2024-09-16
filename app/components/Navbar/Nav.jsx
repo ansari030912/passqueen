@@ -17,7 +17,13 @@ const Nav = () => {
   const [vendorData, setVendorData] = useState([]);
   const [certificationData, setCertificationData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isNavOpen, setIsNavOpen] = useState(false); // State to control the dropdown visibility
+
   const router = useRouter();
+
+  const toggleDropNav = () => {
+    setIsNavOpen(!isNavOpen); // Toggle the dropdown
+  };
 
   const handleSignOut = () => {
     localStorage.removeItem("loginResponse");
@@ -77,27 +83,37 @@ const Nav = () => {
     setIsOpen(!isOpen);
   };
 
+  const normalizeSearchValue = (value) => {
+    return value.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  };
+
   const handleSearch = (value) => {
     setSearchValue(value);
     router.push("#");
   };
 
   const filteredData = searchData
-    .filter((item) =>
-      item.code.toLowerCase().startsWith(searchValue.toLowerCase())
-    )
+    .filter((item) => {
+      const normalizedCode = normalizeSearchValue(item.code);
+      const normalizedSearchValue = normalizeSearchValue(searchValue);
+      return normalizedCode.includes(normalizedSearchValue);
+    })
     .slice(0, 30);
 
   const filteredVendors = vendorData
-    .filter((item) =>
-      item.slug.toLowerCase().startsWith(searchValue.toLowerCase())
-    )
+    .filter((item) => {
+      const normalizedSlug = normalizeSearchValue(item.slug);
+      const normalizedSearchValue = normalizeSearchValue(searchValue);
+      return normalizedSlug.includes(normalizedSearchValue);
+    })
     .slice(0, 10);
 
   const filteredCertifications = certificationData
-    .filter((item) =>
-      item.slug.toLowerCase().startsWith(searchValue.toLowerCase())
-    )
+    .filter((item) => {
+      const normalizedSlug = normalizeSearchValue(item.slug);
+      const normalizedSearchValue = normalizeSearchValue(searchValue);
+      return normalizedSlug.includes(normalizedSearchValue);
+    })
     .slice(0, 10);
 
   const handleExamPage = (exam) => {
@@ -167,20 +183,17 @@ const Nav = () => {
 
   return (
     <section>
-      <div className="container mx-auto max-w-8xl">
+      <div className="">
         <nav className="relative">
           <div className="h-20 py-4 px-6">
             <div className="flex h-full -mx-4 items-center justify-between">
               <div className="w-10/12 px-4">
                 <div className="flex items-center">
-                  <Link
-                    className="inline-block h-5 mb-3 mr-6 flex-shrink-0"
-                    href="/"
-                  >
+                  <Link className="inline-block mr-6 flex-shrink-0" href="/">
                     <img
                       src="/img/pass_queen_dark.png"
-                      height={"180px"}
-                      width={"180px"}
+                      // height={"120px"}
+                      width={"125px"}
                       alt="Pass Queen"
                     />
                   </Link>
@@ -226,44 +239,53 @@ const Nav = () => {
                 </div>
               </div>
               <div className="hidden lg:flex items-right">
-                <a
+                <Link
                   className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
                   href="/exam-training-providers"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
                     Vendors
                   </span>
-                </a>
-                <a
+                </Link>
+                <Link
                   className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-500 text-opacity-90 text-gray-600"
                   href="/exam-certification-providers"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
                     Certifications
                   </span>
-                </a>
-                <a
+                </Link>
+                <Link
                   className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
-                  href="#"
+                  href="/unlimited-access"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
-                    Unlimited Access
+                    Unlimited{" "}
+                    <span className="hidden xl:inline-flex">Access</span>
                   </span>
-                </a>
-                <a
-                  className="inline-flex items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                </Link>
+                <Link
+                  className="inline-flex mr-10 items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
                   href="/video-taining-providers"
                 >
                   <span className="mr-2 underline-offset-2 font-bold">
                     Video Courses
                   </span>
-                </a>
+                </Link>
+                <Link
+                  className="inline-flex items-right text-sm text-nowrap font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  href="/test-engine-simulator"
+                >
+                  <span className="mr-2 underline-offset-2 font-bold">
+                    Test Engine
+                  </span>
+                </Link>
               </div>
               <div className="w-1/2 px-4">
                 <div className="flex items-center justify-end">
-                  <a
-                    className="group bg-indigo-500 opacity-90 mr-6 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2 py-3 inline-flex items-center text-sm"
-                    href="#"
+                  <Link
+                    className="group bg-indigo-500 opacity-90 lg:mr-6 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2 py-3 inline-flex items-center text-sm"
+                    href="/cart"
                   >
                     <span className="md:mr-2">
                       <svg
@@ -285,32 +307,116 @@ const Nav = () => {
                     <span className="hidden 2xl:inline-block text-white font-semibold">
                       Cart
                     </span>
-                  </a>
-                  <a
-                    className="group bg-indigo-500 opacity-90 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2 py-3 inline-flex items-center text-sm"
-                    href="#"
-                  >
-                    <span className="md:mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1.5em"
-                        height="1.5em"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill="none"
-                          stroke="white"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19c0-2.21-2.686-4-6-4s-6 1.79-6 4m16-3v-3m0 0v-3m0 3h-3m3 0h3M9 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8"
-                        />
-                      </svg>
-                    </span>
-                    <span className="hidden 2xl:inline-block text-white font-semibold">
-                      Sign In / Sign Up
-                    </span>
-                  </a>
+                  </Link>
+                  <div className="relative">
+                    <button
+                      onClick={toggleDropNav}
+                      className="bg-indigo-500 hidden opacity-90 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2  lg:inline-flex items-center text-sm"
+                    >
+                      {!loginResponse?.is_logged_in ? (
+                        <span className="py-3 flex">
+                          <span className="md:mr-2 ">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="1.7em"
+                              height="1.7em"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                fill="none"
+                                stroke="white"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M15 19c0-2.21-2.686-4-6-4s-6 1.79-6 4m16-3v-3m0 0v-3m0 3h-3m3 0h3M9 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8"
+                              />
+                            </svg>
+                          </span>
+                          <span className="hidden 2xl:inline-block text-white font-semibold">
+                            <Link href={"/sign-in"}>Sign In</Link> /{" "}
+                            <Link href={"/sign-up"}>Sign Up</Link>
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="flex py-1.5">
+                          <span className="md:mr-2 flex flex-col justify-center">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="1.7em"
+                              height="1.7em"
+                              viewBox="0 0 256 256"
+                            >
+                              <rect width="256" height="256" fill="none" />
+                              <path
+                                fill="white"
+                                d="M152 80a8 8 0 0 1 8-8h88a8 8 0 0 1 0 16h-88a8 8 0 0 1-8-8m96 40h-88a8 8 0 0 0 0 16h88a8 8 0 0 0 0-16m0 48h-64a8 8 0 0 0 0 16h64a8 8 0 0 0 0-16m-96.25 22a8 8 0 0 1-5.76 9.74a7.6 7.6 0 0 1-2 .26a8 8 0 0 1-7.75-6c-6.16-23.94-30.34-42-56.25-42s-50.09 18.05-56.25 42a8 8 0 0 1-15.5-4c5.59-21.71 21.84-39.29 42.46-48a48 48 0 1 1 58.58 0c20.63 8.71 36.88 26.29 42.47 48M80 136a32 32 0 1 0-32-32a32 32 0 0 0 32 32"
+                              />
+                            </svg>
+                          </span>
+                          <span className="hidden text-xs 2xl:inline-block text-white font-semibold">
+                            <div>{loginResponse?.name.slice(0, 15)}</div>
+                            <div>{loginResponse?.email.slice(0, 15)}...</div>
+                          </span>
+                        </span>
+                      )}
+                    </button>
+
+                    {/* Additional nav links */}
+                    {loginResponse?.is_logged_in && isNavOpen && (
+                      <div className="absolute hidden text-nowrap lg:inline-flex mt-14 bg-white shadow-lg rounded-lg p-4 right-0 z-10">
+                        <ul className="space-y-2">
+                          <li>
+                            <Link
+                              href="/account/products"
+                              className="text-gray-600 hover:text-indigo-600"
+                            >
+                              Products
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/account/invoices"
+                              className="text-gray-600 hover:text-indigo-600"
+                            >
+                              Invoices
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/account/login-history"
+                              className="text-gray-600 hover:text-indigo-600"
+                            >
+                              Login History
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/account/download-history"
+                              className="text-gray-600 hover:text-indigo-600"
+                            >
+                              Download History
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/account/update-profile"
+                              className="text-gray-600 hover:text-indigo-600"
+                            >
+                              Update Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <div
+                              onClick={handleSignOut}
+                              className="text-gray-600 cursor-pointer hover:text-indigo-600"
+                            >
+                              Sign Out
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -402,9 +508,9 @@ const Nav = () => {
           <div className="py-12 mb-auto">
             <ul className="flex-col">
               <li className="mb-3">
-                <a
+                <Link
                   className="group mr-6 inline-flex items-center text-base"
-                  href="#"
+                  href="/sign-in"
                 >
                   <span className="mr-2 text-purple-400">
                     <svg
@@ -430,11 +536,11 @@ const Nav = () => {
                       />
                     </svg>
                   </span>
-                  <span className="font-semibold text-rhino-700">Login</span>
-                </a>
+                  <span className="font-semibold text-rhino-700">Sign In</span>
+                </Link>
               </li>
               <li className="mb-3">
-                <a
+                <Link
                   className="group mr-6 inline-flex items-center text-base"
                   href="#"
                 >
@@ -458,10 +564,10 @@ const Nav = () => {
                     </svg>
                   </span>
                   <span className="font-semibold text-rhino-700">Favorite</span>
-                </a>
+                </Link>
               </li>
               <li className="mb-12">
-                <a
+                <Link
                   className="inline-flex items-center text-base text-purple-400 hover:text-blue-400"
                   href="#"
                 >
@@ -497,10 +603,10 @@ const Nav = () => {
                     </svg>
                   </span>
                   <span className="font-semibold text-rhino-700">Cart</span>
-                </a>
+                </Link>
               </li>
               <li className="mb-4">
-                <a
+                <Link
                   className="flex items-center text-base font-bold text-rhino-700"
                   href="#"
                 >
@@ -517,10 +623,10 @@ const Nav = () => {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
+                </Link>
               </li>
               <li className="mb-4">
-                <a
+                <Link
                   className="flex items-center text-base font-bold text-rhino-700"
                   href="#"
                 >
@@ -537,39 +643,39 @@ const Nav = () => {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
+                </Link>
               </li>
               <li className="mb-4">
-                <a
+                <Link
                   className="flex items-center text-base font-bold text-rhino-700"
                   href="#"
                 >
                   Products
-                </a>
+                </Link>
               </li>
               <li className="mb-4">
-                <a
+                <Link
                   className="flex items-center text-base font-bold text-rhino-700"
                   href="#"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li className="mb-4">
-                <a
+                <Link
                   className="flex items-center text-base font-bold text-rhino-700"
                   href="#"
                 >
                   Shop
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="flex items-center text-base font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
                   href="#"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
