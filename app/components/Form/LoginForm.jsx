@@ -2,11 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
 import axios from "axios"; // Assuming axios is used
 import { useRouter } from "next/navigation";
 import { Base_URL } from "@/app/URL's/Base_URL";
 import { X_API_Key } from "@/app/URL's/Api_X_Key";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const LoginForm = () => {
   const [passwordError, setPasswordError] = useState("");
   const [ip, setIp] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,6 +29,10 @@ const LoginForm = () => {
     }
     fetchIp();
   }, []);
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -65,9 +71,11 @@ const LoginForm = () => {
         }
       );
       setIsLogin(response.data);
-      setOpenSnackbar(true);
 
       if (response.data.is_logged_in) {
+        setSnackbarMessage("Login successful!");
+        setOpenSnackbar(true);
+
         const currentTime = Date.now();
         const twoHoursInMillis = 2 * 60 * 60 * 1000;
         const expiryTime = currentTime + twoHoursInMillis;
@@ -82,15 +90,19 @@ const LoginForm = () => {
         }
         window.location.reload();
       } else {
+        setSnackbarMessage(response.data.message || "Login failed.");
+        setOpenSnackbar(true);
         router.push("/sign-in");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong. Please try again later.");
+      setSnackbarMessage("Something went wrong. Please try again later.");
+      setOpenSnackbar(true);
     } finally {
       setLoading(false);
     }
   };
+
   if (isLogin?.is_logged_in && ip === "") {
     return null;
   } else if (!isLogin?.is_logged_in && ip != "") {
@@ -166,6 +178,17 @@ const LoginForm = () => {
             </Link>
           </p>
         </div>
+
+        {/* Snackbar for error messages */}
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          onClose={handleSnackbarClose}
+        >
+          <Alert onClose={handleSnackbarClose} severity="error">
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </section>
     );
   }

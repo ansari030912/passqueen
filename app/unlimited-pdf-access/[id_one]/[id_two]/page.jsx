@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation";
 
 const UnlimitedPDFPage = ({ params }) => {
   const router = useRouter();
-
   const [bannerUrl, setBannerUrl] = useState({});
   const [unlimitedTeAccess, setUnlimitedTeAccess] = useState();
   const [currentPage, setCurrentPage] = useState(1);

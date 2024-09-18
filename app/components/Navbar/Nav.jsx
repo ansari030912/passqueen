@@ -367,6 +367,7 @@ const Nav = () => {
                         <ul className="space-y-2">
                           <li>
                             <Link
+                              onClick={toggleDropNav}
                               href="/account/products"
                               className="text-gray-600 hover:text-indigo-600"
                             >
@@ -375,7 +376,8 @@ const Nav = () => {
                           </li>
                           <li>
                             <Link
-                              href="/account/invoices"
+                              onClick={toggleDropNav}
+                              href="/account/purchase-invoice"
                               className="text-gray-600 hover:text-indigo-600"
                             >
                               Invoices
@@ -383,6 +385,7 @@ const Nav = () => {
                           </li>
                           <li>
                             <Link
+                              onClick={toggleDropNav}
                               href="/account/login-history"
                               className="text-gray-600 hover:text-indigo-600"
                             >
@@ -391,6 +394,7 @@ const Nav = () => {
                           </li>
                           <li>
                             <Link
+                              onClick={toggleDropNav}
                               href="/account/download-history"
                               className="text-gray-600 hover:text-indigo-600"
                             >
@@ -399,6 +403,7 @@ const Nav = () => {
                           </li>
                           <li>
                             <Link
+                              onClick={toggleDropNav}
                               href="/account/update-profile"
                               className="text-gray-600 hover:text-indigo-600"
                             >

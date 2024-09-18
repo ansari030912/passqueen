@@ -277,12 +277,12 @@ const RegisterForm = () => {
           </form>
         </div>
         <p className="text-gray-600 text-center font-medium">
-          <span>Don’t have an account?</span>{" "}
+          <span>Already have an account?</span>{" "}
           <Link
             className="text-indigo-600 hover:text-indigo-700"
-            href="/register"
+            href="/sign-in"
           >
-            Create free account
+            Sign In
           </Link>
         </p>
       </div>
