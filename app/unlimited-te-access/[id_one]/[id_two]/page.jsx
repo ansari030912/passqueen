@@ -234,10 +234,10 @@ const UnlimitedTeAccessPage = ({ params }) => {
                     are checking your payment so this might take a few hours.
                     Please contact our sales chat support or send an email to{" "}
                     <a
-                      href="mailto:sales@examprince.com"
+                      href="mailto:sales@passqueen.com"
                       className="text-blue-600"
                     >
-                      sales@examprince.com
+                      sales@passqueen.com
                     </a>{" "}
                     for fast approval. Thank you.
                   </p>

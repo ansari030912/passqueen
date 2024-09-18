@@ -47,7 +47,7 @@ const page = async () => {
               <p className="pb-6 text-lg text-gray-500 border-gray-100">
                 <strong>1. What products does PassQueen.com offer?</strong>
                 <br />
-                PassQueen.com provides a wide range of study materials,
+                PassQueen.com provides a wide range of Exam Training,
                 primarily in the form of Questions and Answers for exam
                 preparation. These materials are available in PDF format, which
                 can be downloaded to your computer. We recommend a two-week

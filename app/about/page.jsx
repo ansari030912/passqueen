@@ -33,7 +33,7 @@ const AboutUs = async () => {
 
               <p className="mb-4 text-base md:text-lg font-medium text-gray-500">
                 PassQueen.com is dedicated to providing candidates with
-                comprehensive study materials for all types of IT
+                comprehensive Exam Training for all types of IT
                 certifications. We guarantee that our resources not only help
                 you pass your exams but also deepen your understanding of the
                 respective subjects. While there are many companies in the
@@ -46,11 +46,11 @@ const AboutUs = async () => {
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:flex-1 px-4">
               <h3 className="mb-4 text-xl md:text-2xl font-bold text-gray-700">
-                Latest Study Materials
+                Latest Exam Training
               </h3>
               <p className="pb-4 text-lg text-gray-500 border-gray-100">
                 At PassQueen.com, you’ll find the latest and most accurate
-                study materials for all kinds of IT certification exams. Whether
+                Exam Training for all kinds of IT certification exams. Whether
                 you&apos;re pursuing certifications from IBM, Microsoft, Cisco
                 (CCNA/CCDA/CCNP), VMware VCP510, Checkpoint CCSE, CompTIA
                 A+/Network+, or others, we help you pass any IT exam on your
@@ -74,7 +74,7 @@ const AboutUs = async () => {
                 Quality Over Quantity
               </h3>
               <p className="mb-4 text-lg text-gray-500">
-                Our study materials include high-quality questions, verified
+                Our Exam Training include high-quality questions, verified
                 answers, and professional explanations that cover all the
                 essential knowledge points. With an emphasis on the main topics
                 and concise summaries, our materials cover at least 95% of the
@@ -97,7 +97,7 @@ const AboutUs = async () => {
               </h3>
               <p className="mb-8 text-lg font-medium text-gray-500">
                 With these advantages, you can make an informed choice about
-                your study materials. If you have any questions or need further
+                your Exam Training. If you have any questions or need further
                 information, feel free to contact us at sales@passqueen.com.
               </p>
             </div>

@@ -126,10 +126,10 @@ const TeAccess = ({ params }) => {
             fontWeight={600}
           >
             <span className="text-red-500 font-bold">NOTE</span> : Download the
-            study4pass Test Engine Simulator and install it, then download the
-            premium .study4pass file using above yellow button and you will get
-            .zip file, unzip it, and add it to study4pass Test Engine Simulator.
-            Activate the premium .study4pass file with above purchase and
+            PassQueen Test Engine Simulator and install it, then download the
+            premium .passqueen file using above yellow button and you will get
+            .zip file, unzip it, and add it to PassQueen Test Engine Simulator.
+            Activate the premium .passqueen file with above purchase and
             activation keys.
           </i>
         </Box>
@@ -215,11 +215,11 @@ const TeAccess = ({ params }) => {
                   fontWeight={600}
                 >
                   <span className="text-red-500 font-bold">NOTE</span> :
-                  Download the study4pass Test Engine Simulator and install it,
-                  then download the premium .study4pass file using above yellow
+                  Download the PassQueen Test Engine Simulator and install it,
+                  then download the premium .passqueen file using above yellow
                   button and you will get .zip file, unzip it, and add it to
-                  study4pass Test Engine Simulator. Activate the premium
-                  .study4pass file with above purchase and activation keys.
+                  PassQueen Test Engine Simulator. Activate the premium
+                  .passqueen file with above purchase and activation keys.
                 </i>
               </div>
             </div>
@@ -252,7 +252,7 @@ const TeAccess = ({ params }) => {
                     d="M3.5 13h9a.75.75 0 0 1 .102 1.493l-.102.007h-9a.75.75 0 0 1-.102-1.493zh9zM7.898 1.007L8 1a.75.75 0 0 1 .743.648l.007.102v7.688l2.255-2.254a.75.75 0 0 1 .977-.072l.084.072a.75.75 0 0 1 .072.977l-.072.084L8.53 11.78a.75.75 0 0 1-.976.073l-.084-.073l-3.536-3.535a.75.75 0 0 1 .977-1.133l.084.072L7.25 9.44V1.75a.75.75 0 0 1 .648-.743L8 1z"
                   />
                 </svg>
-                Download .study4pass File
+                Download .passqueen File
               </span>
             </button>
           </Link>

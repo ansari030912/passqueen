@@ -363,7 +363,7 @@ const TestimonialsSection = () => {
               Testimonials from Our Users
             </span>
           </h2>
-          <p
+          {/* <p
             style={{
               textAlign: "center",
               fontSize: "1.125rem",
@@ -371,8 +371,8 @@ const TestimonialsSection = () => {
               color: "#4b5563",
             }}
           >
-            Study4Pass made my certification exam prep easy and successful!
-          </p>
+            PassQueen made my certification exam prep easy and successful!
+          </p> */}
 
           <div className="row">
             {/* First row - scrolling from left to right */}

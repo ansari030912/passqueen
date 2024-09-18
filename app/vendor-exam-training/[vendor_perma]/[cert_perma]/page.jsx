@@ -128,7 +128,7 @@ export async function generateMetadata({ params }) {
       other: [
         {
           rel: "canonical",
-          url: `https://study4pass.com/study-meterial/${params.vendor_perma}/${params.exam_perma}`,
+          url: `https://passqueen.com/study-meterial/${params.vendor_perma}/${params.exam_perma}`,
         },
       ],
     },

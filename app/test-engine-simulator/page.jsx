@@ -36,7 +36,7 @@ const page = async () => {
           className="text-gray-800"
           sx={{ textAlign: "center" }}
         >
-          HOW TO OPEN TEST ENGINE .examprince FILES
+          HOW TO OPEN TEST ENGINE .passqueen FILES
         </Typography>
         <Typography
           variant="body2"
@@ -133,7 +133,7 @@ const page = async () => {
                         <Link
                           class="relative group inline-block py-4 px-5 items-center w-full text-gray-50 hover:text-gray-700 font-semibold bg-indigo-500 rounded-full overflow-hidden"
                           href={
-                            "https://releases.examprince.com/ExamPrinceTestEngine.exe"
+                            "https://releases.passqueen.com/PassQueenTestEngine.exe"
                           }
                         >
                           <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
@@ -146,7 +146,7 @@ const page = async () => {
                         <Link
                           class="relative group inline-block py-4 px-5 items-center w-full text-gray-50 hover:text-gray-700 font-semibold bg-indigo-500 rounded-full overflow-hidden"
                           href={
-                            "https://releases.examprince.com/ExamPrinceTestEngine.zip"
+                            "https://releases.passqueen.com/PassQueenTestEngine.zip"
                           }
                         >
                           <div class="absolute top-0 right-full w-full h-full bg-white transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"></div>
