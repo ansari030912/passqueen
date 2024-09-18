@@ -175,3 +175,20 @@ const page = async () => {
 };
 
 export default page;
+export async function generateMetadata() {
+  return {
+    title: `Pass Queen Test Engine Simulator`,
+    description: `PassQueen is a premium provider of Real and Valid Exam Training of IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
+    robots: {
+      index: true,
+    },
+    icons: {
+      other: [
+        {
+          rel: "canonical",
+          url: `https://passqueen.com/test-engine-simulator`,
+        },
+      ],
+    },
+  };
+}

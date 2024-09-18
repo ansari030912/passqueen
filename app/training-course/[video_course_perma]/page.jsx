@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   );
   const data = await response.json();
   return {
-    title: `Updated ${data.title} by Tech Professionals`,
+    title: `Updated ${data.title} Video Exam Training by Tech Professionals`,
     description: `PassQueen is a premium provider of Real and Valid Exam Video Training of ${data.title} IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
     robots: {
       index: true,
