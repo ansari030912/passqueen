@@ -9,6 +9,7 @@ import { X_API_Key } from "@/app/URL's/Api_X_Key";
 import { Base_URL } from "@/app/URL's/Base_URL";
 
 import { Grid } from "@mui/material";
+import RedirectPage from "../../RedirectPage";
 
 const page = async ({ params, searchParams }) => {
   const referral = searchParams?.ref || "";
@@ -84,6 +85,7 @@ const page = async ({ params, searchParams }) => {
         </Grid>
       </div>
       <CommentPostCard />
+      <RedirectPage examData={examData} />
     </>
   );
 };
@@ -100,10 +102,14 @@ export async function generateMetadata({ params }) {
   );
   const data = await response.json();
   return {
-    title: `Updated ${data.exam_title} Exam Training by Tech Professionals`,
-    description: `PassQueen is a premium provider of Real and Valid Exam Training of ${data.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
+    title: `Updated ${
+      data.exam_title ? data.exam_title : ""
+    } Exam Training by Tech Professionals`,
+    description: `PassQueen is a premium provider of Real and Valid Exam Training of ${
+      data.exam_title ? data.exam_title : ""
+    } IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
     robots: {
-      index: data.index_tag ? data.index_tag : false,
+      index: data.index_tag === true ? data.index_tag : false,
     },
     icons: {
       other: [
