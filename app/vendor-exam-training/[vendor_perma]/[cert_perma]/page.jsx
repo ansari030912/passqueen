@@ -95,9 +95,7 @@ const page = async ({ params }) => {
                     </Grid>
                   ))
                 ) : (
-                  <div className="text-center w-full text-gray-500">
-                    No exams available.
-                  </div>
+                  <div className="text-center w-full text-gray-500"></div>
                 )}
               </Grid>
             </div>

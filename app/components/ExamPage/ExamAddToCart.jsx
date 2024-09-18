@@ -52,7 +52,7 @@ const ExamAddToCart = ({ examData }) => {
   };
 
   if (!examData || !examData.exam_prices || examData.exam_prices.length === 0) {
-    return <div>No exam data available.</div>;
+    return <div></div>;
   }
 
   return (
