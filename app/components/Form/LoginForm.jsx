@@ -173,7 +173,7 @@ const LoginForm = () => {
           </div>
           <p className="text-gray-600 text-center font-medium">
             <span>Don’t have an account?</span>{" "}
-            <Link className="text-indigo-600 hover:text-indigo-700" href="#">
+            <Link className="text-indigo-600 hover:text-indigo-700" href="/sign-up">
               Create free account
             </Link>
           </p>
