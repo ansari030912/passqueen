@@ -36,10 +36,10 @@ const AllVideoCoursesTable = ({ data, referral }) => {
             const { vendor_title, training_courses, vendor_id, vendor_perma } =
               item;
             return (
-              <Card
+              <div
                 key={vendor_title}
                 sx={{ my: "10px" }}
-                className="text-gray-700 shadow-none"
+                className="text-gray-700 py-2 mb-4 bg-white shadow-none"
               >
                 <Box
                   sx={{
@@ -80,7 +80,7 @@ const AllVideoCoursesTable = ({ data, referral }) => {
                 <Box sx={{ padding: "10px" }}>
                   <VideoCourseSlider data={training_courses} />
                 </Box>
-              </Card>
+              </div>
             );
           })}
     </>

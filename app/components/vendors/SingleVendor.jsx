@@ -15,7 +15,7 @@ const SingleVendor = ({ vendorData }) => {
     setSearchTerm(e.target.value);
   };
   return (
-    <section class="pt-8 pb-10 bg-cover bg-fixed">
+    <section class="pt-8 pb-36 bg-cover bg-fixed">
       <div class="container mx-auto px-4">
         <h1 class="text-center text-3xl md:text-4xl ">
           <span className="bg-clip-text font-bold text-transparent  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
@@ -76,13 +76,13 @@ const SingleVendor = ({ vendorData }) => {
                           {item.exam_code}
                         </div>
                         <div className="">{item.exam_title}</div>
-                        <div className="pr-2 font-bold text-gray-400 ">
+                        <i className="pr-2 font-bold text-gray-400 ">
                           #{" "}
                           <span className="text-indigo-400">
                             {item.exam_questions}
                           </span>
                           <span> ----- Exam are Avaiable</span>{" "}
-                        </div>
+                        </i>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-indigo-50 bg-opacity-70 backdrop-blur-sm flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

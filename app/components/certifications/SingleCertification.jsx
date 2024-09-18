@@ -15,7 +15,7 @@ const SingleCertification = ({ vendorData }) => {
     setSearchTerm(e.target.value);
   };
   return (
-    <section class="pt-8 pb-10 bg-cover bg-fixed">
+    <section class="pt-8 pb-36 bg-cover bg-fixed">
       <div class="container mx-auto px-4">
         <h1 class="text-center text-3xl md:text-4xl ">
           <span className="bg-clip-text font-bold text-transparent  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
@@ -75,7 +75,8 @@ const SingleCertification = ({ vendorData }) => {
                         {/* <div className="bg-clip-text text-sm lg:text-lg text-transparent flex justify-end bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                           {item.exam_code}
                         </div> */}
-                        <div className="">{item.cert_title}</div>
+                        <div className="text-indigo-500">{item.cert_title}</div>
+                        <i className="text-sm">{item.cert_name}</i>
                         {/* <div className="pr-2 font-semibold text-indigo-400">
                           <span className="font-bold">
                             {item.exam_questions}

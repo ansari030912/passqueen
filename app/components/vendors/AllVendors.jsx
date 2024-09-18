@@ -16,7 +16,7 @@ const AllVendors = ({ vendorData }) => {
   };
 
   return (
-    <section className="pt-8 pb-10 bg-cover bg-fixed">
+    <section className="pt-8 pb-36 bg-cover bg-fixed">
       <div className="container mx-auto px-4">
         <h1 className="text-center text-3xl md:text-4xl ">
           <span className="bg-clip-text font-bold mr-6 text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
@@ -73,14 +73,14 @@ const AllVendors = ({ vendorData }) => {
                   <div className="flex font-bold text-gray-500">
                     <img src="/product2.png" className="mr-3 h-16" alt="" />
                     <div className="flex flex-col justify-center">
-                      <div>{item.vendor_title}</div>
-                      <div className="pr-2 font-bold text-gray-400 ">
+                      <div className="text-indigo-500">{item.vendor_title}</div>
+                      <i className="pr-2 font-bold text-gray-400 ">
                         #{" "}
-                        <span className="text-indigo-400">
+                        <span className="text-pink-400">
                           {item.vendor_exams}
                         </span>
                         <span> ----- Exam are Avaiable</span>{" "}
-                      </div>
+                      </i>
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-indigo-50 bg-opacity-70 backdrop-blur-sm flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

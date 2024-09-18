@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
 
 const FooterMain = () => {
@@ -11,11 +12,7 @@ const FooterMain = () => {
             <div class="flex flex-wrap -m-4">
               <div class="w-full lg:w-1/2 p-4">
                 <a href="#" class="inline-block mb-6">
-                  <img
-                    class="h-12 "
-                   src="/img/pass_queen_dark.png"
-                    alt=""
-                  />
+                  <img class="h-12 " src="/img/pass_queen_dark.png" alt="" />
                 </a>
                 <p class="text-gray-500">
                   PassQueen does not provide real Microsoft exam questions.
@@ -31,36 +28,36 @@ const FooterMain = () => {
                 <p class="font-semibold mb-6">Pages</p>
                 <ul class="flex flex-col gap-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/exam-training-providers"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
-                      Home
-                    </a>
+                      Vendors
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/exam-certification-providers"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
-                      Vendors / Certs
-                    </a>
+                      Certifications
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/unlimited-access"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       Unlimited Access
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/video-taining-providers"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       Video Courses
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -68,57 +65,65 @@ const FooterMain = () => {
                 <p class="font-semibold mb-6">Other Pages</p>
                 <ul class="flex flex-col gap-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/privacy-policy"
+                      class="text-gray-500 hover:text-gray-900 transition duration-200"
+                    >
+                      Privacy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/faqs"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       FAQ&apos;s
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/refund-policy"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       Refund Policy
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/terms-and-conditions"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       Terms & Conditions
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 hover:text-gray-900 transition duration-200"
-                    >
-                      Payments
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
               <div class="w-full sm:w-1/3 lg:w-1/6 p-4">
-                <p class="font-semibold mb-6">Help</p>
+                <p class="font-semibold mb-6">Helpful Pages</p>
                 <ul class="flex flex-col gap-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/home"
+                      class="text-gray-500 hover:text-gray-900 transition duration-200"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/about"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       About
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="#"
                       class="text-gray-500 hover:text-gray-900 transition duration-200"
                     >
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
