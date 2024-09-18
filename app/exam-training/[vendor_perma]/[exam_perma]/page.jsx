@@ -100,8 +100,8 @@ export async function generateMetadata({ params }) {
   );
   const data = await response.json();
   return {
-    title: `Updated ${data.exam_title} Exam Question and Answers by Tech Professionals`,
-    description: `Dumps-Collections is a premium provider of Real and Valid Exam Question and Answers of ${data.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024 and become certified professional.`,
+    title: `Updated ${data.exam_title} Exam Training by Tech Professionals`,
+    description: `PassQueen is a premium provider of Real and Valid Exam Training of ${data.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
     robots: {
       index: data.index_tag ? data.index_tag : false,
     },
@@ -109,7 +109,7 @@ export async function generateMetadata({ params }) {
       other: [
         {
           rel: "canonical",
-          url: `https://examaster.netlify.app/exam-training/${params.vendor_perma}/${params.exam_perma}`,
+          url: `https://passqueen.com/exam-training/${params.vendor_perma}/${params.exam_perma}`,
         },
       ],
     },

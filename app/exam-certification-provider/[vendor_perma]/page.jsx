@@ -25,3 +25,28 @@ const page = async ({ params }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }) {
+  const response = await fetch(`${Base_URL}/v1/vendor/${params.vendor_perma}`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const metaDATA = await response.json();
+  return {
+    title: `Updated ${metaDATA.vendor_title} Exam Training by Tech Professionals`,
+    description: `PassQueen is a premium provider of Real and Valid Exam Training of ${metaDATA.vendor_title} IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
+    robots: {
+      index: metaDATA?.index_tag,
+    },
+    icons: {
+      other: [
+        {
+          rel: "canonical",
+          url: `https://passqueen.com/exam-certification-provider/${params?.vendor_perma}`,
+        },
+      ],
+    },
+  };
+}

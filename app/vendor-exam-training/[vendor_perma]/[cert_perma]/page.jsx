@@ -109,3 +109,28 @@ const page = async ({ params }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }) {
+  const response = await fetch(`${Base_URL}/v1/exam/${params.exam_perma}`, {
+    headers: {
+      "x-api-key": X_API_Key,
+    },
+  });
+
+  const data = await response.json();
+  return {
+    title: `Updated Exam Training ${data.exam_title} by Tech Professionals`,
+    description: `PassQueen is a premium provider of Real and Valid Exam Training of ${data.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
+    robots: {
+      index: data.index_tag ? data.index_tag : false,
+    },
+    icons: {
+      other: [
+        {
+          rel: "canonical",
+          url: `https://study4pass.com/study-meterial/${params.vendor_perma}/${params.exam_perma}`,
+        },
+      ],
+    },
+  };
+}

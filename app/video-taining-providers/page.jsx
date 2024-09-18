@@ -8,8 +8,8 @@ import { X_API_Key } from "../URL's/Api_X_Key";
 
 export async function generateMetadata() {
   return {
-    title: `Updated Certificates Exam Question and Answers by Tech Professionals`,
-    description: `Examprince is a premium provider of Real and Valid Exam Question and Answers of IT certification Exams. Pass your certification exam easily with pdf and test engine dumps in 2024.`,
+    title: `Updated Exam Training by Tech Professionals`,
+    description: `PassQueen is a premium provider of Real and Valid Exam Training of IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
     robots: {
       index: true,
     },
@@ -17,7 +17,7 @@ export async function generateMetadata() {
       other: [
         {
           rel: "canonical",
-          url: `https://examprince.com/video-courses`,
+          url: `https://passqueen.com/video-taining-providers`,
         },
       ],
     },
