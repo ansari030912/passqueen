@@ -12,7 +12,7 @@ const FooterMain = () => {
             <div class="flex flex-wrap -m-4">
               <div class="w-full lg:w-1/2 p-4">
                 <a href="#" class="inline-block mb-6">
-                  <img class="h-12 " src="/img/pass_queen_dark.png" alt="" />
+                  <img class="h-12 " src="/img/passqueen.svg" alt="" />
                 </a>
                 <p class="text-gray-500">
                   PassQueen does not provide real Microsoft exam questions.

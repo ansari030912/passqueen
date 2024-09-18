@@ -191,9 +191,9 @@ const Nav = () => {
                 <div className="flex items-center">
                   <Link className="inline-block mr-6 flex-shrink-0" href="/">
                     <img
-                      src="/img/pass_queen_dark.png"
+                      src="/img/passqueen.svg"
                       // height={"120px"}
-                      width={"125px"}
+                      width={"145px"}
                       alt="Pass Queen"
                     />
                   </Link>
@@ -484,7 +484,7 @@ const Nav = () => {
         <nav className="relative flex flex-col pt-12 pb-6 px-8 w-full h-full bg-white overflow-y-auto">
           <div className="flex mb-12 items-center">
             <a className="inline-block mr-auto" href="#">
-              <img className="h-8" src="/img/pass_queen_dark.png" alt="Logo" />
+              <img className="h-8" src="/img/passqueen.svg" alt="Logo" />
             </a>
             <button onClick={() => setMobileNavOpen(!mobileNavOpen)}>
               <svg

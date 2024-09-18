@@ -341,10 +341,12 @@ const TestimonialsSection = () => {
       </style>
 
       <section
-        className="bg-gray-50"
+
+        className="bg-cover bg-fixed bg-no-repeat"
         style={{
           padding: "60px 0",
           overflow: "hidden",
+          backgroundImage:'url(/light-orange-blue-1.png)'
         }}
       >
         <div>
