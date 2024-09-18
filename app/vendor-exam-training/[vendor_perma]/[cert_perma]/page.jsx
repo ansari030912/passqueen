@@ -122,7 +122,7 @@ export async function generateMetadata({ params }) {
     title: `Updated Exam Training ${data.exam_title} by Tech Professionals`,
     description: `PassQueen is a premium provider of Real and Valid Exam Training of ${data.exam_title} IT certification Exams. Pass your certification exam easily with pdf and test engine exams in 2024.`,
     robots: {
-      index: data.index_tag ? data.index_tag : false,
+      index: !data?.vendor_title === null ? true : false,
     },
     icons: {
       other: [
