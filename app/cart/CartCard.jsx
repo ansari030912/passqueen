@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import {
-  Box,
   Checkbox,
   FormControlLabel,
   Grid,
@@ -11,7 +10,6 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { X_API_Key } from "../URL's/Api_X_Key";
 import { Base_URL } from "../URL's/Base_URL";
@@ -34,8 +32,6 @@ const CartCard = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarBgColor, setSnackbarBgColor] = useState("");
-  const searchParams = useSearchParams();
-  const queryEmail = searchParams.get("referralCode");
 
   useEffect(() => {
     async function fetchIp() {
