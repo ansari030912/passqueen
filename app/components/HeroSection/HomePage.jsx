@@ -30,7 +30,7 @@ const HomePage = () => {
       <div className="container mx-auto">
         <div className="flex flex-wrap">
           <div className="w-full lg:w-6/12 p-4 lg:pt-20">
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <h1 className="lg:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
               Efficiently Conquer Your Next Certification Exam!
             </h1>
             <p className="mt-4 text-gray-600">

@@ -43,10 +43,10 @@ const RecentlyUpdatedCards = async () => {
                       <Avatar
                         alt={item.exam_vendor_title}
                         src={item.exam_vendor_img}
+                        // src={`/vendors/${item.exam_vendor_perma}.png`}
                         variant="square"
                         className="h-16 w-20"
                       />
-
                       <Typography
                         variant="body2"
                         className="bg-blue-100 px-2 py-1 font-bold text-indigo-500 rounded-lg"

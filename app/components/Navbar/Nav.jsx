@@ -287,11 +287,11 @@ const Nav = () => {
                     className="group bg-indigo-500 opacity-90 lg:mr-6 px-3 rounded-lg shadow-lg border-indigo-400 shadow-neutral-300 border-2 py-3 inline-flex items-center text-sm"
                     href="/cart"
                   >
-                    <span className="md:mr-2">
+                    <span className="2xl:mr-1 flex">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="1.5em"
-                        height="1.5em"
+                        width="1.7em"
+                        height="1.7em"
                         viewBox="0 0 24 24"
                       >
                         <path
@@ -307,6 +307,20 @@ const Nav = () => {
                     <span className="hidden 2xl:inline-block text-white font-semibold">
                       Cart
                     </span>
+                    <div>
+                      <div className="font-bold bg-indigo-500 text-white text-base ml-1">
+                        <div
+                          style={{
+                            // paddingBottom: "2px",
+                            paddingLeft: "3px",
+                            paddingRight: "4px",
+                          }}
+                          className=""
+                        >
+                          {cartResponce ? cartResponce?.length : "0"}
+                        </div>
+                      </div>
+                    </div>
                   </Link>
                   <div className="relative">
                     <button
@@ -315,7 +329,7 @@ const Nav = () => {
                     >
                       {!loginResponse?.is_logged_in ? (
                         <span className="py-3 flex">
-                          <span className="md:mr-2 ">
+                          <Link href={"/sign-in"} className="2xl:mr-2 ">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="1.7em"
@@ -331,7 +345,7 @@ const Nav = () => {
                                 d="M15 19c0-2.21-2.686-4-6-4s-6 1.79-6 4m16-3v-3m0 0v-3m0 3h-3m3 0h3M9 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8"
                               />
                             </svg>
-                          </span>
+                          </Link>
                           <span className="hidden 2xl:inline-block text-white font-semibold">
                             <Link href={"/sign-in"}>Sign In</Link> /{" "}
                             <Link href={"/sign-up"}>Sign Up</Link>
@@ -442,7 +456,7 @@ const Nav = () => {
             </div>
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="lg:hidden text-coolGray-400 hover:text-coolGray-600"
+              className="lg:hidden ml-3 text-coolGray-400 hover:text-coolGray-600"
             >
               <svg
                 width="24"
@@ -478,6 +492,7 @@ const Nav = () => {
         </nav>
       </div>
       <div
+        style={{ zIndex: "10000000000" }}
         className={`${
           mobileNavOpen ? "block" : "hidden"
         } fixed top-0 left-0 bottom-0 w-5/6 max-w-md z-50`}
@@ -486,8 +501,11 @@ const Nav = () => {
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
           className="fixed inset-0 bg-purple-100 opacity-70"
         ></div>
-        <nav className="relative flex flex-col pt-12 pb-6 px-8 w-full h-full bg-white overflow-y-auto">
-          <div className="flex mb-12 items-center">
+        <nav
+        
+          className="relative flex flex-col pt-6 pb-6 px-8 w-full h-full bg-white overflow-y-auto"
+        >
+          <div className="flex mb-6 items-center">
             <a className="inline-block mr-auto" href="#">
               <img className="h-8" src="/img/passqueen.svg" alt="Logo" />
             </a>
@@ -510,67 +528,9 @@ const Nav = () => {
             </button>
           </div>
 
-          <div className="py-12 mb-auto">
+          <div className="py-2 mb-auto">
             <ul className="flex-col">
-              <li className="mb-3">
-                <Link
-                  className="group mr-6 inline-flex items-center text-base"
-                  href="/sign-in"
-                >
-                  <span className="mr-2 text-purple-400">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M13.3334 13.3333V12C13.3334 11.2928 13.0525 10.6145 12.5524 10.1144C12.0523 9.61429 11.374 9.33334 10.6667 9.33334H5.33341C4.62617 9.33334 3.94789 9.61429 3.4478 10.1144C2.9477 10.6145 2.66675 11.2928 2.66675 12V13.3333"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M7.99992 6.66667C9.47268 6.66667 10.6666 5.47276 10.6666 4C10.6666 2.52724 9.47268 1.33334 7.99992 1.33334C6.52716 1.33334 5.33325 2.52724 5.33325 4C5.33325 5.47276 6.52716 6.66667 7.99992 6.66667Z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  <span className="font-semibold text-rhino-700">Sign In</span>
-                </Link>
-              </li>
-              <li className="mb-3">
-                <Link
-                  className="group mr-6 inline-flex items-center text-base"
-                  href="#"
-                >
-                  <span className="mr-2 text-purple-400">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_1208_8162)">
-                        <path
-                          d="M14.1941 3.07455C13.8536 2.73389 13.4493 2.46365 13.0043 2.27927C12.5594 2.0949 12.0824 2 11.6008 2C11.1191 2 10.6422 2.0949 10.1972 2.27927C9.75224 2.46365 9.34795 2.73389 9.00745 3.07455L8.30078 3.78122L7.59411 3.07455C6.90632 2.38676 5.97347 2.00036 5.00078 2.00036C4.02809 2.00036 3.09524 2.38676 2.40745 3.07455C1.71965 3.76235 1.33325 4.69519 1.33325 5.66788C1.33325 6.64057 1.71965 7.57342 2.40745 8.26122L3.11411 8.96788L8.30078 14.1545L13.4874 8.96788L14.1941 8.26122C14.5348 7.92071 14.805 7.51643 14.9894 7.07145C15.1738 6.62648 15.2687 6.14954 15.2687 5.66788C15.2687 5.18623 15.1738 4.70929 14.9894 4.26431C14.805 3.81934 14.5348 3.41505 14.1941 3.07455V3.07455Z"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </g>
-                    </svg>
-                  </span>
-                  <span className="font-semibold text-rhino-700">Favorite</span>
-                </Link>
-              </li>
+              {/*             
               <li className="mb-12">
                 <Link
                   className="inline-flex items-center text-base text-purple-400 hover:text-blue-400"
@@ -609,84 +569,202 @@ const Nav = () => {
                   </span>
                   <span className="font-semibold text-rhino-700">Cart</span>
                 </Link>
-              </li>
+              </li> */}
               <li className="mb-4">
                 <Link
                   className="flex items-center text-base font-bold text-rhino-700"
                   href="#"
                 >
-                  <span className="mr-2 underline font-semibold">Home</span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.47315 10.36L12.2398 6.58667C12.3023 6.52469 12.3519 6.45096 12.3857 6.36972C12.4196 6.28848 12.437 6.20134 12.437 6.11333C12.437 6.02533 12.4196 5.93819 12.3857 5.85695C12.3519 5.77571 12.3023 5.70198 12.2398 5.64C12.1149 5.51583 11.9459 5.44614 11.7698 5.44614C11.5937 5.44614 11.4247 5.51583 11.2998 5.64L7.96648 8.94L4.66648 5.64C4.54157 5.51583 4.3726 5.44614 4.19648 5.44614C4.02036 5.44614 3.85139 5.51583 3.72648 5.64C3.66349 5.70174 3.61337 5.77537 3.57904 5.85662C3.54471 5.93787 3.52685 6.02513 3.52648 6.11333C3.52685 6.20154 3.54471 6.28879 3.57904 6.37004C3.61337 6.45129 3.66349 6.52492 3.72648 6.58667L7.49315 10.36C7.55557 10.4277 7.63134 10.4817 7.71568 10.5186C7.80001 10.5556 7.89108 10.5746 7.98315 10.5746C8.07521 10.5746 8.16628 10.5556 8.25062 10.5186C8.33495 10.4817 8.41072 10.4277 8.47315 10.36Z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                  <span className="mr-2 font-semibold">Blogs</span>
+                </Link>
+              </li>
+
+              <li className="mb-4">
+                <Link
+                  className="flex items-center text-base font-semibold text-rhino-700"
+                  href="/exam-training-providers"
+                >
+                  Vendors
                 </Link>
               </li>
               <li className="mb-4">
                 <Link
-                  className="flex items-center text-base font-bold text-rhino-700"
-                  href="#"
+                  className="flex items-center text-base font-semibold text-rhino-700"
+                  href="/exam-certification-providers"
                 >
-                  <span className="mr-2 underline font-semibold">Pages</span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.47315 10.36L12.2398 6.58667C12.3023 6.52469 12.3519 6.45096 12.3857 6.36972C12.4196 6.28848 12.437 6.20134 12.437 6.11333C12.437 6.02533 12.4196 5.93819 12.3857 5.85695C12.3519 5.77571 12.3023 5.70198 12.2398 5.64C12.1149 5.51583 11.9459 5.44614 11.7698 5.44614C11.5937 5.44614 11.4247 5.51583 11.2998 5.64L7.96648 8.94L4.66648 5.64C4.54157 5.51583 4.3726 5.44614 4.19648 5.44614C4.02036 5.44614 3.85139 5.51583 3.72648 5.64C3.66349 5.70174 3.61337 5.77537 3.57904 5.85662C3.54471 5.93787 3.52685 6.02513 3.52648 6.11333C3.52685 6.20154 3.54471 6.28879 3.57904 6.37004C3.61337 6.45129 3.66349 6.52492 3.72648 6.58667L7.49315 10.36C7.55557 10.4277 7.63134 10.4817 7.71568 10.5186C7.80001 10.5556 7.89108 10.5746 7.98315 10.5746C8.07521 10.5746 8.16628 10.5556 8.25062 10.5186C8.33495 10.4817 8.41072 10.4277 8.47315 10.36Z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                  Certifications
                 </Link>
               </li>
               <li className="mb-4">
                 <Link
-                  className="flex items-center text-base font-bold text-rhino-700"
-                  href="#"
+                  className="flex items-center text-base font-semibold text-rhino-700"
+                  href="/unlimited-access"
                 >
-                  Products
+                  Unlimited Access
                 </Link>
               </li>
               <li className="mb-4">
                 <Link
-                  className="flex items-center text-base font-bold text-rhino-700"
-                  href="#"
+                  className="flex items-center text-base font-semibold text-rhino-700"
+                  href="/test-engine-simulator"
                 >
-                  Blog
+                  Test Engine
+                </Link>
+              </li>
+              <li className="mb-4 border-b-2 pb-4">
+                <Link
+                  className="flex items-center text-base font-semibold text-rhino-700"
+                  href="/video-taining-providers"
+                >
+                  Video Courses
                 </Link>
               </li>
               <li className="mb-4">
                 <Link
-                  className="flex items-center text-base font-bold text-rhino-700"
-                  href="#"
+                  className="flex items-center text-base font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  href="/about"
                 >
-                  Shop
+                  About
                 </Link>
               </li>
-              <li>
+              <li className="mb-4">
+                <Link
+                  className="flex items-center text-base font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  href="/faqs"
+                >
+                  Faqs
+                </Link>
+              </li>
+              <li className="mb-4">
+                <Link
+                  className="flex items-center text-base font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  href="/privacy-policy"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="mb-4">
                 <Link
                   className="flex items-center text-base font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
                   href="#"
                 >
-                  Contact
+                  Refund Policy
                 </Link>
               </li>
+              <li className="mb-4 border-b-2 pb-4">
+                <Link
+                  className="flex items-center text-base font-semibold hover:text-indigo-400 text-opacity-90 text-gray-600"
+                  href="#"
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
+              {loginResponse?.is_logged_in ? (
+                <>
+                  <li className="mb-4">
+                    <div className="flex items-center text-base font-bold text-rhino-700">
+                      <span className="mr-2 text-indigo-500 font-semibold">
+                        {loginResponse?.email}
+                      </span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.47315 10.36L12.2398 6.58667C12.3023 6.52469 12.3519 6.45096 12.3857 6.36972C12.4196 6.28848 12.437 6.20134 12.437 6.11333C12.437 6.02533 12.4196 5.93819 12.3857 5.85695C12.3519 5.77571 12.3023 5.70198 12.2398 5.64C12.1149 5.51583 11.9459 5.44614 11.7698 5.44614C11.5937 5.44614 11.4247 5.51583 11.2998 5.64L7.96648 8.94L4.66648 5.64C4.54157 5.51583 4.3726 5.44614 4.19648 5.44614C4.02036 5.44614 3.85139 5.51583 3.72648 5.64C3.66349 5.70174 3.61337 5.77537 3.57904 5.85662C3.54471 5.93787 3.52685 6.02513 3.52648 6.11333C3.52685 6.20154 3.54471 6.28879 3.57904 6.37004C3.61337 6.45129 3.66349 6.52492 3.72648 6.58667L7.49315 10.36C7.55557 10.4277 7.63134 10.4817 7.71568 10.5186C7.80001 10.5556 7.89108 10.5746 7.98315 10.5746C8.07521 10.5746 8.16628 10.5556 8.25062 10.5186C8.33495 10.4817 8.41072 10.4277 8.47315 10.36Z"
+                          fill="#6366F1"
+                        />
+                      </svg>
+                    </div>
+                  </li>
+                  <li className="mb-4">
+                    <Link
+                      className="flex items-center text-base font-bold text-rhino-700"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                      href="/account/products"
+                    >
+                      <span className="mr-2 font-semibold">Products</span>
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link
+                      className="flex items-center text-base font-bold text-rhino-700"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                      href="/account/purchase-invoice"
+                    >
+                      <span className="mr-2 font-semibold">Invoices</span>
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link
+                      className="flex items-center text-base font-bold text-rhino-700"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                      href="/account/login-history"
+                    >
+                      <span className="mr-2 font-semibold">Login History</span>
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link
+                      className="flex items-center text-base font-bold text-rhino-700"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                      href="/account/download-history"
+                    >
+                      <span className="mr-2 font-semibold">
+                        Download History
+                      </span>
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link
+                      className="flex items-center text-base font-bold text-rhino-700"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                      href="/account/update-profile"
+                    >
+                      <span className="mr-2 font-semibold">Update Profile</span>
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <div
+                      className="flex items-center cursor-pointer text-base font-bold text-rhino-700"
+                      onClick={handleSignOut}
+                    >
+                      <span className="mr-2 font-semibold">SignOut</span>
+                    </div>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="mb-4 flex">
+                    Already have an account?
+                    <Link
+                      className="flex ml-1 items-center text-base font-bold text-indigo-500"
+                      href="/sign-in"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                    >
+                      <span className="mr-1 font-semibold">Sign In</span>
+                    </Link>
+                  </li>
+                  <li className="mb-4 flex">
+                    Don&apos;t have an account?
+                    <Link
+                      className="flex ml-1 items-center text-base font-bold text-indigo-500"
+                      href="/sign-up"
+                      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+                    >
+                      <span className="mr-1 font-semibold">Sign Up</span>
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <div>
             <p className="text-center text-sm text-coolGray-400">
-              passqueen.com
+              © 2024 passqueen.com
             </p>
           </div>
         </nav>
@@ -703,8 +781,9 @@ const Nav = () => {
               position: "absolute",
               left: 0,
               borderRadius: "0px",
+              zIndex: "1000",
             }}
-            className="lg:z-50 w-full"
+            className="md:z-50 w-full"
           >
             <Card
               sx={{ maxHeight: "500px", overflowY: "auto", padding: "10px" }}

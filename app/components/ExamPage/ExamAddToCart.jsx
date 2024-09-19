@@ -39,11 +39,11 @@ const ExamAddToCart = ({ examData }) => {
       // Add new exam to the cart
       existingCart.push({ cart: cartProduct });
       localStorage.setItem("CartProducts", JSON.stringify(existingCart));
-
       // Show success Snackbar for item added to cart
-      setSnackbarMessage("Item added to cart successfully");
       setSnackbarSeverity("success");
       setOpenSnackbar(true);
+      setSnackbarMessage("Item added to cart successfully");
+      window.location.reload();
     }
   };
 

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import {
+  Box,
   Checkbox,
   FormControlLabel,
   Grid,
@@ -247,6 +248,7 @@ const CartCard = () => {
     const updatedCartResponse = cartResponse.filter(
       (item) => !item.cart.startsWith(itemPrefix)
     );
+
     setCartResponse(updatedCartResponse);
 
     if (typeof localStorage !== "undefined") {
@@ -256,10 +258,18 @@ const CartCard = () => {
         const updatedCartProducts = cartProducts.filter(
           (item) => !item.cart.startsWith(itemPrefix)
         );
-        localStorage.setItem(
-          "CartProducts",
-          JSON.stringify(updatedCartProducts)
-        );
+
+        if (updatedCartProducts.length === 0) {
+          // If there are no items left, clear the cart from local storage
+          localStorage.removeItem("CartProducts");
+          window.location.reload();
+        } else {
+          // Otherwise, update the cart in local storage
+          localStorage.setItem(
+            "CartProducts",
+            JSON.stringify(updatedCartProducts)
+          );
+        }
       }
     }
   };
@@ -267,202 +277,217 @@ const CartCard = () => {
   return (
     <section className="lg:py-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="container mx-auto px-4">
-        <div className="p-8 lg:px-16 bg-white shadow-2xl">
-          <h2 className="mb-12 border-b pb-5 text-4xl font-bold text-gray-600 font-heading">
-            Shopping Cart
-          </h2>
-          <div className="mb-4 pb-4 border-b">
-            <div className="flex mb-8 flex-wrap items-center justify-between">
-              {cartResponse.length > 0 ? (
-                cartResponse.map((item) => (
-                  <div
-                    key={item.cart}
-                    className="w-full mb-8 xl:mb-0 lg:flex justify-between items-center"
-                  >
-                    <div className="flex">
-                      <div className="lg:inline-flex hidden items-center justify-center h-32 mb-4 lg:mb-0">
-                        <img
-                          className="h-full object-contain"
-                          src={`/product2.png`}
-                          alt={item.exam_vendor_title}
-                        />
+        {cartResponse.length > 0 ? (
+          <div className="p-8 lg:px-16 bg-white shadow-2xl">
+            <h2 className="mb-12 border-b pb-5 text-4xl font-bold text-gray-600 font-heading">
+              Shopping Cart
+            </h2>
+            <div className="mb-4 pb-4 border-b">
+              <div className="flex mb-8 flex-wrap items-center justify-between">
+                {cartResponse.length > 0 ? (
+                  cartResponse.map((item) => (
+                    <div
+                      key={item.cart}
+                      className="w-full mb-8 xl:mb-0 lg:flex justify-between items-center"
+                    >
+                      <div className="flex">
+                        <div className="lg:inline-flex hidden items-center justify-center h-32 mb-4 lg:mb-0">
+                          <img
+                            className="h-full object-contain"
+                            src={`/product2.png`}
+                            alt={item.exam_vendor_title}
+                          />
+                        </div>
+                        <div className="w-full flex flex-col justify-center md:w-auto md:pl-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                          <div>
+                            <h3 className="mb-2 text-xl font-bold font-heading">
+                              {item.exam_code} - {item.exam_title}
+                            </h3>
+                            <p className="mb-3 text-gray-500">{item.title}</p>
+                            <span className="text-lg font-bold font-heading text-blue-400">
+                              ${item.price} /
+                            </span>
+                            <span className="text-sm font-semibold font-heading text-red-400 line-through">
+                              ${item.full_price}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="w-full flex flex-col justify-center md:w-auto md:pl-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-                        <div>
-                          <h3 className="mb-2 text-xl font-bold font-heading">
-                            {item.exam_code} - {item.exam_title}
-                          </h3>
-                          <p className="mb-3 text-gray-500">{item.title}</p>
-                          <span className="text-lg font-bold font-heading text-blue-400">
-                            ${item.price} /
-                          </span>
-                          <span className="text-sm font-semibold font-heading text-red-400 line-through">
-                            ${item.full_price}
-                          </span>
+
+                      <div className="w-full lg:w-auto flex flex-wrap justify-end items-center">
+                        <div className="w-full flex justify-end md:w-1/3">
+                          <a
+                            className="inline-block  px-3 py-2 text-white font-semibold  bg-red-500 hover:bg-red-600 rounded-md"
+                            href="#"
+                            onClick={() => handleRemoveItem(item)}
+                          >
+                            Remove
+                          </a>
                         </div>
                       </div>
                     </div>
-
-                    <div className="w-full lg:w-auto flex flex-wrap justify-end items-center">
-                      <div className="w-full flex justify-end md:w-1/3">
-                        <a
-                          className="inline-block  px-3 py-2 text-white font-semibold  bg-red-500 hover:bg-red-600 rounded-md"
-                          href="#"
-                          onClick={() => handleRemoveItem(item)}
-                        >
-                          Remove
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No items in the cart.</p>
-              )}
+                  ))
+                ) : (
+                  <p>No items in the cart.</p>
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="mb-10">
-            <div className="py-2 border-b mb-4 border-dashed">
-              <h6 className="mb-4 text-lg font-semibold text-gray-700">
-                Enter Your Details
-              </h6>
-              <Grid container spacing={2} className="mb-4 text-gray-700">
-                <Grid item xs={12} md={6}>
-                  <input
-                    type="text"
-                    name="fullName"
-                    className="py-3 px-4 w-full text-sm placeholder-gray-500 text-gray-700 bg-gray-50 outline-none focus:ring focus:ring-gray-100 border-gray-100 rounded-lg transition duration-200"
-                    placeholder="Full Name"
-                    value={fullName}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <input
-                    type="text"
-                    name="email"
-                    className="py-3 px-4 w-full text-sm placeholder-gray-500 text-gray-700 bg-gray-50 outline-none focus:ring focus:ring-gray-100 border-gray-100 rounded-lg transition duration-200"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleChange}
-                  />
-                </Grid>
-              </Grid>
-
-              <h6 className="mb-4 text-lg font-semibold text-gray-700">
-                Discount Code
-              </h6>
-              <form onSubmit={handlePromoSubmit}>
-                <div className="flex flex-wrap items-center text-gray-700 -m-2 mb-0.5">
-                  <div className="w-full lg:flex-1 p-2">
+            <div className="mb-10">
+              <div className="py-2 border-b mb-4 border-dashed">
+                <h6 className="mb-4 text-lg font-semibold text-gray-700">
+                  Enter Your Details
+                </h6>
+                <Grid container spacing={2} className="mb-4 text-gray-700">
+                  <Grid item xs={12} md={6}>
                     <input
                       type="text"
-                      name="voucher"
-                      className="py-3 px-4 w-full text-sm placeholder-gray-500 bg-gray-50 outline-none focus:ring focus:ring-gray-100 border-gray-100 rounded-lg transition duration-200"
-                      placeholder="Enter your voucher"
-                      value={promoInput.replace(PROMO_SUFFIX, "")}
-                      onChange={handlePromoInputChange}
+                      name="fullName"
+                      className="py-3 px-4 w-full text-sm placeholder-gray-500 text-gray-700 bg-gray-50 outline-none focus:ring focus:ring-gray-100 border-gray-100 rounded-lg transition duration-200"
+                      placeholder="Full Name"
+                      value={fullName}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <input
+                      type="text"
+                      name="email"
+                      className="py-3 px-4 w-full text-sm placeholder-gray-500 text-gray-700 bg-gray-50 outline-none focus:ring focus:ring-gray-100 border-gray-100 rounded-lg transition duration-200"
+                      placeholder="Email"
+                      value={email}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                </Grid>
+
+                <h6 className="mb-4 text-lg font-semibold text-gray-700">
+                  Discount Code
+                </h6>
+                <form onSubmit={handlePromoSubmit}>
+                  <div className="flex flex-wrap items-center text-gray-700 -m-2 mb-0.5">
+                    <div className="w-full lg:flex-1 p-2">
+                      <input
+                        type="text"
+                        name="voucher"
+                        className="py-3 px-4 w-full text-sm placeholder-gray-500 bg-gray-50 outline-none focus:ring focus:ring-gray-100 border-gray-100 rounded-lg transition duration-200"
+                        placeholder="Enter your voucher"
+                        value={promoInput.replace(PROMO_SUFFIX, "")}
+                        onChange={handlePromoInputChange}
+                      />
+                    </div>
+                    <div className="w-full lg:w-auto p-2">
+                      <button
+                        type="submit"
+                        className="py-3 px-7 w-full text-sm text-white font-semibold bg-gray-900 hover:bg-gray-800 focus:bg-gray-900 rounded-5xl focus:ring-4 focus:ring-gray-200 transition duration-300"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </div>
+                  <p className="text-sm pl-2 font-semibold text-green-600">
+                    Coupon{" "}
+                    <span className="text-red-500 font-bold">
+                      &apos;{apiPromoCode.slice(0, -3)}&apos;
+                    </span>{" "}
+                    is Applied Successfully.
+                  </p>
+                </form>
+
+                <div className="mx-2">
+                  <div className="text-gray-700">
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={acceptedTerms}
+                          onChange={handleChange}
+                          name="acceptedTerms"
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Typography>
+                          I agree to the{" "}
+                          <Link
+                            className="text-blue-400"
+                            href="/terms-and-conditions"
+                          >
+                            terms and conditions
+                          </Link>
+                        </Typography>
+                      }
                     />
                   </div>
-                  <div className="w-full lg:w-auto p-2">
-                    <button
-                      type="submit"
-                      className="py-3 px-7 w-full text-sm text-white font-semibold bg-gray-900 hover:bg-gray-800 focus:bg-gray-900 rounded-5xl focus:ring-4 focus:ring-gray-200 transition duration-300"
-                    >
-                      Apply
-                    </button>
-                  </div>
                 </div>
-                <p className="text-sm pl-2 font-semibold text-green-600">
-                  Coupon{" "}
-                  <span className="text-red-500 font-bold">
-                    &apos;{apiPromoCode.slice(0, -3)}&apos;
-                  </span>{" "}
-                  is Applied Successfully.
-                </p>
-              </form>
+              </div>
 
-              <div className="mx-2">
-                <div className="text-gray-700">
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={acceptedTerms}
-                        onChange={handleChange}
-                        name="acceptedTerms"
-                        color="primary"
-                      />
-                    }
-                    label={
-                      <Typography>
-                        I agree to the{" "}
-                        <Link
-                          className="text-blue-400"
-                          href="/terms-and-conditions"
-                        >
-                          terms and conditions
-                        </Link>
-                      </Typography>
-                    }
-                  />
+              <div className="py-3 px-10 bg-gray-100 text-gray-700 rounded-full">
+                <div className="flex justify-between">
+                  <span className="font-medium">Subtotal</span>
+                  <span className="font-bold text-red-500 font-heading">
+                    ${totals.subtotal.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+              <div className="py-3 px-10 rounded-full text-gray-700">
+                <div className="flex justify-between">
+                  <span className="font-medium">Discount</span>
+                  <span className="font-bold text-green-500 font-heading">
+                    ${totals.discount.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+              <div className="py-3 px-10 bg-gray-100 text-gray-700 rounded-full">
+                <div className="flex justify-between">
+                  <span className="font-medium">Off</span>
+                  <span className="font-bold text-green-500 font-heading">
+                    {" "}
+                    %{cartResponse[0]?.off}.00
+                  </span>
+                </div>
+              </div>
+              <div className="py-3 px-10 rounded-full text-gray-700">
+                <div className="flex justify-between">
+                  <span className="text-base md:text-xl font-bold font-heading">
+                    Order Total
+                  </span>
+                  <span className="font-bold text-indigo-500  text-xl font-heading">
+                    ${totals.total.toFixed(2)}
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="py-3 px-10 bg-gray-100 text-gray-700 rounded-full">
-              <div className="flex justify-between">
-                <span className="font-medium">Subtotal</span>
-                <span className="font-bold text-red-500 font-heading">
-                  ${totals.subtotal.toFixed(2)}
-                </span>
-              </div>
-            </div>
-            <div className="py-3 px-10 rounded-full text-gray-700">
-              <div className="flex justify-between">
-                <span className="font-medium">Discount</span>
-                <span className="font-bold text-green-500 font-heading">
-                  ${totals.discount.toFixed(2)}
-                </span>
-              </div>
-            </div>
-            <div className="py-3 px-10 bg-gray-100 text-gray-700 rounded-full">
-              <div className="flex justify-between">
-                <span className="font-medium">Off</span>
-                <span className="font-bold text-green-500 font-heading">
-                  {" "}
-                  %{cartResponse[0]?.off}.00
-                </span>
-              </div>
-            </div>
-            <div className="py-3 px-10 rounded-full text-gray-700">
-              <div className="flex justify-between">
-                <span className="text-base md:text-xl font-bold font-heading">
-                  Order Total
-                </span>
-                <span className="font-bold text-indigo-500  text-xl font-heading">
-                  ${totals.total.toFixed(2)}
-                </span>
-              </div>
+            <div className="text-right">
+              <Link
+                className="inline-block text-gray-700 mb-4 md:mb-0 mr-6 w-full md:w-auto px-8 py-4 bg-gray-100 hover:bg-gray-200 text-center font-bold font-heading uppercase rounded-md transition duration-200"
+                href="/"
+              >
+                Continue Shopping
+              </Link>
+              <button
+                className="inline-block  w-full md:w-auto px-8 py-4 bg-orange-300 hover:bg-orange-400 text-center text-white font-bold font-heading uppercase rounded-md transition duration-200"
+                href="#"
+                onClick={handleCheckout}
+              >
+                Go to Checkout
+              </button>
             </div>
           </div>
+        ) : (
+          <Box
+            className="rounded-lg py-10 my-20"
+            sx={{ padding: "20px", textAlign: "center" }}
+          >
+            <Typography className="text-gray-600 text-4xl" fontWeight={"bold"}>
+              Cart is Empty
+            </Typography>
 
-          <div className="text-right">
-            <Link
-              className="inline-block text-gray-700 mb-4 md:mb-0 mr-6 w-full md:w-auto px-8 py-4 bg-gray-100 hover:bg-gray-200 text-center font-bold font-heading uppercase rounded-md transition duration-200"
-              href="/"
-            >
-              Continue Shopping
-            </Link>
-            <button
-              className="inline-block  w-full md:w-auto px-8 py-4 bg-orange-300 hover:bg-orange-400 text-center text-white font-bold font-heading uppercase rounded-md transition duration-200"
-              href="#"
-              onClick={handleCheckout}
-            >
-              Go to Checkout
-            </button>
-          </div>
-        </div>
+            <Typography className="text-red-500 text-2xl" fontWeight={"bold"}>
+              Please Add Your Product First
+            </Typography>
+          </Box>
+        )}
       </div>
       <Snackbar
         open={snackbarOpen}

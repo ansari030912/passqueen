@@ -2,6 +2,7 @@
 import { Grid } from "@mui/material";
 import Link from "next/link";
 import ExamAddToCart from "./ExamAddToCart";
+import DemoDownload from "./DemoDownload";
 
 const ProductSection = ({ examData }) => {
   return (
@@ -118,7 +119,7 @@ const ProductSection = ({ examData }) => {
                 </span>
 
                 <Grid container className="mt-10 lg:mt-0" spacing={2}>
-                  <span className="hidden lg:inline-flex" >
+                  <span className="hidden lg:inline-flex">
                     <Grid item md={5}>
                       <img
                         src="/product2.png"
@@ -217,13 +218,7 @@ const ProductSection = ({ examData }) => {
                     </Grid>
                   </span>
                   <Grid item xs={12}>
-                    <Link
-                      href={`https://dumpsarena.com/demo-dl-pdf/4e2da258b7b54f8b9a870c00182efbb2`}
-                    >
-                      <button className="inline-block rounded-2xl px-4 w-full py-4 text-center text-white font-bold opacity-90 border-2 border-red-300 bg-red-500 hover:bg-red-600 bg-opacity-90 hover:bg-opacity-90 transition duration-200">
-                        Download Free Demo PDF
-                      </button>
-                    </Link>
+                    <DemoDownload examData={examData}/>
                   </Grid>
                 </Grid>
               </div>
