@@ -1,59 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://exam-hero.netlify.app/static/sitemap.xml</loc>
+    <loc>https://passqueen.com/static/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-provider-1/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-provider-1/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/certifications-1/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-certification-provider-1/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/certifications-2/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-1/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-1/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-2/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-2/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-3/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-3/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-4/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-4/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-5/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-5/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-6/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-6/sitemap.xml</loc>
+    <loc>https://passqueen.com/exam-training-7/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/exam-questions-7/sitemap.xml</loc>
+    <loc>https://passqueen.com/vendor-exam-training-1/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/vendor-exam-questions-1/sitemap.xml</loc>
+    <loc>https://passqueen.com/vendor-exam-training-2/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://exam-hero.netlify.app/vendor-exam-questions-2/sitemap.xml</loc>
-    <lastmod>2024-04-17</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://exam-hero.netlify.app/training-course-1/sitemap.xml</loc>
+    <loc>https://passqueen.com/training-course-1/sitemap.xml</loc>
     <lastmod>2024-04-17</lastmod>
   </sitemap>
 </sitemapindex>
